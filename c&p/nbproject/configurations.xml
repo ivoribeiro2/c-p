@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>DataManagement.h</itemPath>
+      <itemPath>cliente.h</itemPath>
+      <itemPath>encomenda.h</itemPath>
+      <itemPath>ingrediente.h</itemPath>
+      <itemPath>linha_encomenda.h</itemPath>
+      <itemPath>linha_produto_final.h</itemPath>
+      <itemPath>producao.h</itemPath>
+      <itemPath>produto_final.h</itemPath>
+      <itemPath>tipo_utilizador.h</itemPath>
+      <itemPath>unidade.h</itemPath>
+      <itemPath>utilizador.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>DataManagement.c</itemPath>
+      <itemPath>../../DataManagementAPI/files.c</itemPath>
+      <itemPath>main_1.c</itemPath>
+      <itemPath>tipo_utilizador.c</itemPath>
+      <itemPath>utilizador.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+      </compileType>
+      <item path="../../DataManagementAPI/files.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DataManagement.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DataManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cliente.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="encomenda.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ingrediente.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="linha_encomenda.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="linha_produto_final.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main_1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="producao.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="produto_final.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tipo_utilizador.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tipo_utilizador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="unidade.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="utilizador.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="utilizador.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="../../DataManagementAPI/files.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DataManagement.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DataManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cliente.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="encomenda.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ingrediente.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="linha_encomenda.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="linha_produto_final.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main_1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="producao.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="produto_final.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tipo_utilizador.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tipo_utilizador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="unidade.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="utilizador.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="utilizador.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

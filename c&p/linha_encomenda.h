@@ -21,7 +21,7 @@ extern "C" {
         unsigned short id_encomenda;
         unsigned short id_produto_final;
         unsigned short quantidade;
-    } linhaEncomenda;
+    } LinhaEncomenda;
     
     typedef enum {
         ID_LINHA_ENCOMENDA,

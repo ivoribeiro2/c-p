@@ -24,9 +24,17 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>DataManagement.c</itemPath>
+      <itemPath>cliente.c</itemPath>
+      <itemPath>encomenda.c</itemPath>
       <itemPath>../../DataManagementAPI/files.c</itemPath>
-      <itemPath>main_1.c</itemPath>
+      <itemPath>ingrediente.c</itemPath>
+      <itemPath>linha_encomenda.c</itemPath>
+      <itemPath>linha_produto_final.c</itemPath>
+      <itemPath>main.c</itemPath>
+      <itemPath>producao.c</itemPath>
+      <itemPath>produtoFinal.c</itemPath>
       <itemPath>tipo_utilizador.c</itemPath>
+      <itemPath>unidade.c</itemPath>
       <itemPath>utilizador.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -57,25 +65,41 @@
       </item>
       <item path="DataManagement.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="cliente.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="cliente.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="encomenda.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="encomenda.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ingrediente.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="ingrediente.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="linha_encomenda.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="linha_encomenda.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="linha_produto_final.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="linha_produto_final.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="main_1.c" ex="false" tool="0" flavor2="0">
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="producao.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="producao.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="produtoFinal.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="produto_final.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tipo_utilizador.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tipo_utilizador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="unidade.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="unidade.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -110,25 +134,41 @@
       </item>
       <item path="DataManagement.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="cliente.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="cliente.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="encomenda.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="encomenda.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ingrediente.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="ingrediente.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="linha_encomenda.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="linha_encomenda.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="linha_produto_final.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="linha_produto_final.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="main_1.c" ex="false" tool="0" flavor2="0">
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="producao.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="producao.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="produtoFinal.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="produto_final.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tipo_utilizador.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tipo_utilizador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="unidade.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="unidade.h" ex="false" tool="3" flavor2="0">
       </item>

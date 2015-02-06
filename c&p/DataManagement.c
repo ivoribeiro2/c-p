@@ -196,10 +196,7 @@ void printUnsignedInt(const void * ui) {
  * @param f
  */
 void printFloat(const void * f) {
-
-
     printf("%f", castFloat(f));
-    puts("Olaaaa");
 }
 
 /*
@@ -349,11 +346,12 @@ bool compare(DataType varType, void* varValue, DataType toCompareType, void * to
  * @return a pointer to an array with the keys founded , if 0 founded , return -1 in all array positions 
  */
 int * search(const unsigned int field, void *searchValue, void * list, FieldAux *aux, const unsigned int elementsNumber, const unsigned int structTypeSize, DataType searchValueType, unsigned int *resultCounter, char *signal) {
+    
     unsigned int i = 0, j = 0;
-    *resultCounter = 0;
+    *resultCounter = 0; 
     void *reg;
     int atributeValue = NULL;
-
+    
     static int resultKeys[MAX_RESULTS];
     for (i = 0; i < elementsNumber; i++) {
         reg = list + (structTypeSize * i);

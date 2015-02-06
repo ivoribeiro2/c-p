@@ -17,13 +17,13 @@ extern "C" {
     typedef struct {
         unsigned short id_producao;
         unsigned short id_linha_encomenda;
-        float quantidade;
+        unsigned short quantidade;
     } Producao;
 
     typedef enum {
         ID_PRODUCAO,
         ID_LINHA_ENCOMENDA_PRODUCAO,
-        ID_QUANTIDADE_PRODUCAO
+        QUANTIDADE_PRODUCAO
     } camposProducao;
 
 

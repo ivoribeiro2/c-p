@@ -1,7 +1,7 @@
 
 
 #include "DataManagement.h"
-#include "linha_encomenda.h"
+#include "linha_produto_final.h"
 #include <string.h>
 
 void guardarLinhaProdutoFinal(Class *linhaProdutoFinalClass) {
@@ -10,7 +10,7 @@ void guardarLinhaProdutoFinal(Class *linhaProdutoFinalClass) {
     writeFile(NomeFicheiro, linhaProdutoFinalClass);
 }
 
-void listarLinhaProdutoFinals(Class *linhaProdutoFinalClass) {
+void listarLinhaProdutosFinais(Class *linhaProdutoFinalClass) {
     fullList(linhaProdutoFinalClass);
 
 }
@@ -19,7 +19,7 @@ void listarLinhaProdutoFinal(Class *linhaProdutoFinalClass, const unsigned int c
     singleList(linhaProdutoFinalClass, chave);
 }
 
-void filtrarLinhaProdutoFinals(Class *linhaProdutoFinalClass, int *chaves, int numeroChaves, int *campos, int numeroCampos) {
+void filtrarLinhaProdutosFinais(Class *linhaProdutoFinalClass, int *chaves, int numeroChaves, int *campos, int numeroCampos) {
     parsedList(linhaProdutoFinalClass, chaves, numeroChaves, campos, numeroCampos);
 }
 
@@ -54,7 +54,7 @@ void editarLinhaProdutoFinal(Class *linhaProdutoFinalClass, const unsigned int c
 }
 
 void listar_editar_linhaProdutoFinal(Class *linhaProdutoFinalClass) {
-    listarLinhaProdutoFinals(linhaProdutoFinalClass);
+    listarLinhaProdutosFinais(linhaProdutoFinalClass);
     puts("Escolha o LinhaProdutoFinal que quer editar");
     unsigned int linhaProdutoFinalID;
     readInt(&linhaProdutoFinalID);
@@ -65,7 +65,7 @@ void listar_editar_linhaProdutoFinal(Class *linhaProdutoFinalClass) {
     }
 }
 
-void editarLinhaProdutoFinals(Class *linhaProdutoFinalClass, const unsigned int *chaves, const unsigned numeroChaves) {
+void editarLinhaProdutosFinais(Class *linhaProdutoFinalClass, const unsigned int *chaves, const unsigned numeroChaves) {
     unsigned int i;
     for (i = 0; i < numeroChaves; i++) {
         fullRead(linhaProdutoFinalClass, UPDATE, chaves[i]);
@@ -83,6 +83,14 @@ void removerLinhaProdutoFinal(Class *tipoUtilizadorClass, const unsigned short k
         guardarTipoUtilizador(tipoUtilizadorClass);
         puts("Tipo de utilizador removido com sucesso Obrigado");
     } else puts("Menu eliminar linhaProdutoFinal");
+}
+
+int * pesquisarLinhaProdutoFinal(Class *linhaProdutoFinalClass, const unsigned int campo, void *valorPesquisar, unsigned int *numeroResultados, char *sinal) {
+    FieldAux *aux; 
+    aux = linhaProdutoFinalClass->auxStruct;
+    int * chaves;
+    chaves=search(campo, valorPesquisar, linhaProdutoFinalClass->data, linhaProdutoFinalClass->auxStruct, (*linhaProdutoFinalClass->elements), linhaProdutoFinalClass->StructTypeSize, aux[campo].type, numeroResultados, sinal);
+    return chaves;
 }
 
 

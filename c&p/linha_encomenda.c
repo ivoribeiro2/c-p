@@ -85,4 +85,12 @@ void removerLinhaEncomenda(Class *tipoUtilizadorClass, const unsigned short key)
     } else puts("Menu eliminar linhaEncomenda");
 }
 
+int * pesquisarLinhaEncomenda(Class *linhaEncomendaClass, const unsigned int campo, void *valorPesquisar, unsigned int *numeroResultados, char *sinal) {
+    FieldAux *aux; 
+    aux = linhaEncomendaClass->auxStruct;
+    int * chaves;
+    chaves=search(campo, valorPesquisar, linhaEncomendaClass->data, linhaEncomendaClass->auxStruct, (*linhaEncomendaClass->elements), linhaEncomendaClass->StructTypeSize, aux[campo].type, numeroResultados, sinal);
+    return chaves;
+}
+
 

@@ -37,8 +37,16 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/1154515571/files.o \
 	${OBJECTDIR}/DataManagement.o \
-	${OBJECTDIR}/main_1.o \
+	${OBJECTDIR}/cliente.o \
+	${OBJECTDIR}/encomenda.o \
+	${OBJECTDIR}/ingrediente.o \
+	${OBJECTDIR}/linha_encomenda.o \
+	${OBJECTDIR}/linha_produto_final.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/producao.o \
+	${OBJECTDIR}/produtoFinal.o \
 	${OBJECTDIR}/tipo_utilizador.o \
+	${OBJECTDIR}/unidade.o \
 	${OBJECTDIR}/utilizador.o
 
 
@@ -76,15 +84,55 @@ ${OBJECTDIR}/DataManagement.o: DataManagement.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DataManagement.o DataManagement.c
 
-${OBJECTDIR}/main_1.o: main_1.c 
+${OBJECTDIR}/cliente.o: cliente.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_1.o main_1.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/cliente.o cliente.c
+
+${OBJECTDIR}/encomenda.o: encomenda.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/encomenda.o encomenda.c
+
+${OBJECTDIR}/ingrediente.o: ingrediente.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ingrediente.o ingrediente.c
+
+${OBJECTDIR}/linha_encomenda.o: linha_encomenda.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/linha_encomenda.o linha_encomenda.c
+
+${OBJECTDIR}/linha_produto_final.o: linha_produto_final.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/linha_produto_final.o linha_produto_final.c
+
+${OBJECTDIR}/main.o: main.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/producao.o: producao.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/producao.o producao.c
+
+${OBJECTDIR}/produtoFinal.o: produtoFinal.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/produtoFinal.o produtoFinal.c
 
 ${OBJECTDIR}/tipo_utilizador.o: tipo_utilizador.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tipo_utilizador.o tipo_utilizador.c
+
+${OBJECTDIR}/unidade.o: unidade.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/unidade.o unidade.c
 
 ${OBJECTDIR}/utilizador.o: utilizador.c 
 	${MKDIR} -p ${OBJECTDIR}

@@ -76,9 +76,9 @@ int main(int argc, char** argv) {
     const unsigned short MAX_CLIENTES = 100;
 
     FieldAux estructAuxClientes[] = {
-        {.fieldName = "id_cliente", .alias = "Numero de Cliente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true},
+        {.fieldName = "id_cliente", .alias = "Numero de Cliente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
         {.fieldName = "nome", .alias = "Nome", . sizeBytes = MEDIUM_STRING, .type = STRING, .required = true},
-        {.fieldName = "id_utilizador", .alias = "Username", .sizeBytes = SHORT_SIZE, .type = SHORT, .required = true, .unique = true, .foreignKey = true, .parentPrimaryKey = ID_UTILIZADOR, .parentClass = &utilizadorClass}
+        {.fieldName = "id_utilizador", .alias = "Numero de Utilizador", .sizeBytes = SHORT_SIZE, .type = SHORT, .required = true, .unique = true, .foreignKey = true, .parentPrimaryKey = ID_UTILIZADOR, .parentClass = &utilizadorClass}
     };
 
     Cliente clientes[MAX_CLIENTES];
@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
 
     Class clienteClass = {.name = "cliente", .StructTypeSize = tamTipoCliente, .data = &clientes, .auxStruct = &estructAuxClientes, .elements = &contadorClientes, .fieldsNumber = tamAuxCliente, .aliasField = NOME};
 
-    strcpy(NomeFicheiro, "clientes.txt");
+    strcpy(NomeFicheiro, "cliente.txt");
     readFile(NomeFicheiro, &clienteClass, MAX_CLIENTES);
 
     //---------------------------------------------------------------------------------------------------------//
@@ -96,8 +96,8 @@ int main(int argc, char** argv) {
     const unsigned MAX_UNIDADES = 10;
 
     FieldAux estructAuxUnidades[] = {
-        {.fieldName = "id_unidade", .alias = "Numero de Unidade", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true},
-        {.fieldName = "designacao_unidade", .alias = "Designacao", .sizeBytes = SHORT_STRING, .type = STRING, .unique = true, .required = true}
+        {.fieldName = "id_unidade", .alias = "Numero de Unidade", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
+        {.fieldName = "designacao_unidade", .alias = "Unidade", .sizeBytes = SHORT_STRING, .type = STRING, .unique = true, .required = true}
     };
 
     Unidade unidades[MAX_UNIDADES];
@@ -106,7 +106,7 @@ int main(int argc, char** argv) {
 
     Class unidadeClass = {.name = "unidade", .StructTypeSize = tamTipoUnidade, .data = &unidades, .auxStruct = &estructAuxUnidades, .elements = &contadorUnidades, .fieldsNumber = tamAuxUnidade, .aliasField = DESCRICAO_UNIDADE};
 
-    strcpy(NomeFicheiro, "unidades.txt");
+    strcpy(NomeFicheiro, "unidade.txt");
     readFile(NomeFicheiro, &unidadeClass, MAX_UNIDADES);
 
     //---------------------------------------------------------------------------------------------------------//
@@ -115,8 +115,8 @@ int main(int argc, char** argv) {
     const unsigned MAX_INGREDIENTES = 10;
 
     FieldAux estructAuxIngredientes[] = {
-        {.fieldName = "id_ingrediente", .alias = "Numero de Ingrediente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true},
-        {.fieldName = "designacao_ingrediente", .alias = "Designacao", .sizeBytes = SHORT_STRING, .type = STRING, .unique = true, .required = true}
+        {.fieldName = "id_ingrediente", .alias = "Numero de Ingrediente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
+        {.fieldName = "designacao_ingrediente", .alias = "Ingrediente", .sizeBytes = SHORT_STRING, .type = STRING, .unique = true, .required = true}
     };
 
     Ingrediente ingredientes[MAX_INGREDIENTES];
@@ -125,7 +125,7 @@ int main(int argc, char** argv) {
 
     Class ingredienteClass = {.name = "ingrediente", .StructTypeSize = tamTipoIngrediente, .data = &ingredientes, .auxStruct = &estructAuxIngredientes, .elements = &contadorIngredientes, .fieldsNumber = tamAuxIngrediente, .aliasField = DESCRICAO_INGREDIENTE};
 
-    strcpy(NomeFicheiro, "ingredientes.txt");
+    strcpy(NomeFicheiro, "ingrediente.txt");
     readFile(NomeFicheiro, &ingredienteClass, MAX_INGREDIENTES);
 
     //---------------------------------------------------------------------------------------------------------//
@@ -134,8 +134,8 @@ int main(int argc, char** argv) {
     const unsigned MAX_PRODUTO_FINAL = 10;
 
     FieldAux estructAuxProdutoFinal[] = {
-        {.fieldName = "id_produto_final", .alias = "Numero de Produto Final", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true},
-        {.fieldName = "designacao_produto_final", .alias = "Designacao", .sizeBytes = MEDIUM_STRING, .type = STRING, .unique = true, .required = true}
+        {.fieldName = "id_produto_final", .alias = "Numero de Produto Final", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
+        {.fieldName = "designacao_produto_final", .alias = "Produto Final", .sizeBytes = MEDIUM_STRING, .type = STRING, .unique = true, .required = true}
     };
 
     ProdutoFinal produtosFinais[MAX_PRODUTO_FINAL];
@@ -153,8 +153,8 @@ int main(int argc, char** argv) {
     const unsigned MAX_LINHA_PRODUTO_FINAL = 100;
 
     FieldAux estructAuxLinhaProdutoFinal[] = {
-        {.fieldName = "id_linha_produto_final", .alias = "Numero da Linha do Produto Final", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true},
-        {.fieldName = "id_produto_final", .alias = "Produto Final", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &produtoFinalClass, .parentPrimaryKey = ID_PRODUTO_FINAL},
+        {.fieldName = "id_linha_produto_final", .alias = "Numero da Linha do Produto Final", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
+        {.fieldName = "id_produto_final", .alias = "Produto Final", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .foreignKey = true, .parentClass = &produtoFinalClass, .parentPrimaryKey = ID_PRODUTO_FINAL},
         {.fieldName = "id_ingrediente", .alias = "Ingrediente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &ingredienteClass, .parentPrimaryKey = ID_INGREDIENTE},
         {.fieldName = "id_unidade", .alias = "Unidade", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &unidadeClass, .parentPrimaryKey = ID_UNIDADE},
         {.fieldName = "quantidade", .alias = "Quantidade", .sizeBytes = FLOAT_SIZE, .type = FLOAT, .unique = false, .required = true, .autoIncrement = false},
@@ -176,9 +176,9 @@ int main(int argc, char** argv) {
     const unsigned MAX_ENCOMENDA = 100;
 
     FieldAux estructAuxEncomenda[] = {
-        {.fieldName = "id_encomenda", .alias = "Numero da Linha do Produto Final", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true},
+        {.fieldName = "id_encomenda", .alias = "Numero da Encomenda", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
         {.fieldName = "id_cliente", .alias = "Cliente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &clienteClass, .parentPrimaryKey = ID_CLIENTE},
-        {.fieldName = "data_encomenda", .alias = "Data Encomenda", .sizeBytes = FLOAT_SIZE, .type = FLOAT, .unique = false, .required = true, .autoIncrement = false},
+        {.fieldName = "data_encomenda", .alias = "Data Encomenda", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false},
         {.fieldName = "data_entrega", .alias = "Data Entrega", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false},
 
     };
@@ -189,7 +189,7 @@ int main(int argc, char** argv) {
 
     Class encomendaClass = {.name = "encomenda", .StructTypeSize = tamTipoEncomenda, .data = &encomenda, .auxStruct = &estructAuxEncomenda, .elements = &contadorEncomenda, .fieldsNumber = tamAuxEncomenda, .aliasField = ID_CLIENTE};
 
-    strcpy(NomeFicheiro, "Encomenda.txt");
+    strcpy(NomeFicheiro, "encomenda.txt");
     readFile(NomeFicheiro, &encomendaClass, MAX_ENCOMENDA);
 
     //---------------------------------------------------------------------------------------------------------//
@@ -198,17 +198,16 @@ int main(int argc, char** argv) {
     const unsigned MAX_LINHA_ENCOMENDA = 100;
 
     FieldAux estructAuxLinhaEncomenda[] = {
-        {.fieldName = "id_linha_encomenda", .alias = "Numero da Linha do Produto Final", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true},
+        {.fieldName = "id_linha_encomenda", .alias = "Numero da Linha da Encomenda", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
         {.fieldName = "id_encomenda", .alias = "Encomenda", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &encomendaClass, .parentPrimaryKey = ID_ENCOMENDA},
-        {.fieldName = "id_ingrediente", .alias = "Ingrediente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &ingredienteClass, .parentPrimaryKey = ID_INGREDIENTE},
-        {.fieldName = "id_unidade", .alias = "Unidade", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &unidadeClass, .parentPrimaryKey = ID_UNIDADE},
-        {.fieldName = "quantidade", .alias = "Quantidade", .sizeBytes = FLOAT_SIZE, .type = FLOAT, .unique = false, .required = true, .autoIncrement = false},
+        {.fieldName = "id_produto_final", .alias = "Produto Final", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &produtoFinalClass, .parentPrimaryKey = ID_PRODUTO_FINAL},
+        {.fieldName = "quantidade", .alias = "Quantidade", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false},
 
     };
 
-    linhaEncomenda linhasEncomenda[MAX_LINHA_ENCOMENDA];
+    LinhaEncomenda linhasEncomenda[MAX_LINHA_ENCOMENDA];
     const unsigned int tamAuxLinhaEncomenda = (sizeof (estructAuxLinhaEncomenda) / sizeof (estructAuxLinhaEncomenda[0]));
-    const unsigned int tamTipoLinhaEncomenda = sizeof (linhaEncomenda);
+    const unsigned int tamTipoLinhaEncomenda = sizeof (LinhaEncomenda);
 
     Class linhaEncomendaClass = {.name = "linha_encomenda", .StructTypeSize = tamTipoLinhaEncomenda, .data = &linhasEncomenda, .auxStruct = &estructAuxLinhaEncomenda, .elements = &contadorLinhasEncomenda, .fieldsNumber = tamAuxLinhaEncomenda, .aliasField = ID_PRODUTO_FINAL_LINHA_ENCOMENDA};
 
@@ -217,17 +216,17 @@ int main(int argc, char** argv) {
 
     //---------------------------------------------------------------------------------------------------------//
     //Produção
-    const unsigned MAX_PRODUCAO = 100;
+    const unsigned MAX_PRODUCAO = 50;
 
     FieldAux estructAuxProducao[] = {
-        {.fieldName = "id_producao", .alias = "Numero da Producao", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true},
+        {.fieldName = "id_producao", .alias = "Numero da Producao", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
         {.fieldName = "id_linha_encomenda", .alias = "Linha da Encomenda", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &linhaEncomendaClass, .parentPrimaryKey = ID_LINHA_ENCOMENDA},
-        {.fieldName = "quantidade", .alias = "Quantidade", .sizeBytes = FLOAT_SIZE, .type = FLOAT, .unique = false, .required = true, .autoIncrement = false},
+        {.fieldName = "quantidade", .alias = "Quantidade", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false},
 
     };
 
     Producao producoes[MAX_PRODUCAO];
-    const unsigned int tamAuxProducao = (sizeof (estructAuxLinhaEncomenda) / sizeof (estructAuxLinhaEncomenda[0]));
+    const unsigned int tamAuxProducao = (sizeof (estructAuxProducao) / sizeof (estructAuxProducao[0]));
     const unsigned int tamTipoProducao = sizeof (Producao);
 
     Class producaoClass = {.name = "producao", .StructTypeSize = tamTipoProducao, .data = &producoes, .auxStruct = &estructAuxProducao, .elements = &contadorProducao, .fieldsNumber = tamAuxProducao, .aliasField = ID_LINHA_ENCOMENDA_PRODUCAO};
@@ -240,17 +239,34 @@ int main(int argc, char** argv) {
     typedef struct {
         Class * tipoUtilizadorClass;
         Class * utilizadorClass;
+        Class * clienteClass;
+        Class * unidadeClass;
+        Class * ingredienteClass;
+        Class * produtoFinalClass;
+        Class * linhaProdutoFinalClass;
+        Class * encomendaClass;
+        Class * linhaEncomendaClass;
+        Class * producaoClass;
+
 
     } Classes;
 
     Classes classes;
     classes.tipoUtilizadorClass = &tipoUtilizadorClass;
     classes.utilizadorClass = &utilizadorClass;
+    classes.clienteClass = &clienteClass;
+    classes.unidadeClass = &unidadeClass;
+    classes.ingredienteClass = &ingredienteClass;
+    classes.produtoFinalClass = &produtoFinalClass;
+    classes.linhaProdutoFinalClass = &linhaProdutoFinalClass;
+    classes.encomendaClass = &encomendaClass;
+    classes.linhaEncomendaClass = &linhaEncomendaClass;
+    classes.producaoClass = &producaoClass;
 
     //---------------------------------------------------------------------------------------------------------//
     //Checks
     //inserirTipoUtilizador(classes.tipoUtilizadorClass);
-    //listarTipoUtilizadores(classes.tipoUtilizadorClass);
+    // listarTipoUtilizadores(classes.tipoUtilizadorClass);
 
     //listarTipoUtilizador(classes.tipoUtilizadorClass,0);
     int chaves[] = {0, 1};
@@ -264,12 +280,52 @@ int main(int argc, char** argv) {
     //TipoUtilizador *tipoUtilizadorData = classes.tipoUtilizadorClass->data;
     //removerTipoUtilizador(classes.tipoUtilizadorClass, 2);
     //listarTipoUtilizadores(classes.tipoUtilizadorClass);
-    
+
     //inserirUtilizador(classes.utilizadorClass);
-    listarUtilizadores(classes.utilizadorClass);
-   // (*classes.utilizadorClass->elements)=0;
-    listarUtilizador(classes.utilizadorClass, 0);
+    //listarUtilizadores(classes.utilizadorClass);
+    // (*classes.utilizadorClass->elements)=0;
+    //listarUtilizador(classes.utilizadorClass, 0);
     //printShort(classes.utilizadorClass->elements);
+
+    // inserirCliente(classes.clienteClass);
+    // listarClientes(classes.clienteClass);
+
+    //inserirUnidade(classes.unidadeClass);
+    //listarUnidades(classes.unidadeClass);
+
+    // inserirIngrediente(classes.ingredienteClass);
+    //listarIngredientes(classes.ingredienteClass);
+
+    //inserirProdutoFinal(classes.produtoFinalClass);
+    //listarProdutosFinais(classes.produtoFinalClass);
+
+    //inserirLinhaProdutoFinal(classes.linhaProdutoFinalClass);
+    //listarLinhaProdutosFinais(classes.linhaProdutoFinalClass);
+
+    //inserirEncomenda(classes.encomendaClass);
+    //listarEncomendas(classes.encomendaClass);
+
+    // inserirLinhaEncomenda(classes.linhaEncomendaClass);
+   // listarLinhaEncomendas(classes.linhaEncomendaClass);
+
+
+    //inserirProducao(classes.producaoClass);
+    //printShort(classes.producaoClass->elements);
+    //listarProducoes(classes.producaoClass);
+    
+  // listarProdutosFinais_LinhasProdutoFinal(classes.produtoFinalClass,classes.linhaProdutoFinalClass);
+    //listarProdutoFinal_LinhasProdutoFinal(classes.produtoFinalClass,classes.linhaProdutoFinalClass,0);
+    
+   // listar_Encomenda_linhaEncomenda_producao(classes.encomendaClass,classes.linhaEncomendaClass,classes.producaoClass);
+    
+    listarProducao_Encomenda_LinhaEncomenda(classes.producaoClass,classes.linhaEncomendaClass,classes.produtoFinalClass,classes.linhaProdutoFinalClass);
+
+    //system("clear");
+
+
+
     return (EXIT_SUCCESS);
 }
+
+
 

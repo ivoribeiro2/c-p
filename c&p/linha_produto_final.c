@@ -27,17 +27,22 @@ void filtrarLinhaProdutoFinal(Class *linhaProdutoFinalClass, int chave, int *cam
     singleParsedList(linhaProdutoFinalClass, chave, campos, numeroCampos);
 }
 
-
 void inserirLinhaProdutoFinal(Class *linhaProdutoFinalClass) {
     char mensagemConfirmacao[MEDIUM_STRING];
-    strcpy(mensagemConfirmacao, "Tem a certeza que pertende inserir um novo linhaProdutoFinal?[Y/N]");
+    unsigned short numeroVezes, i;
+    strcpy(mensagemConfirmacao, "Quantas linhas de produtos finais deseja inserir?");
     puts(mensagemConfirmacao);
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true) {
-        create(linhaProdutoFinalClass);
-        guardarLinhaProdutoFinal(linhaProdutoFinalClass);
-    } else puts("Regressar ao menu gestao de linhaProdutoFinal");
+    readShort(&numeroVezes);
+    for (i = 0; i < numeroVezes; i++) {
+        strcpy(mensagemConfirmacao, "Tem a certeza que pertende inserir uma nova Linha a um Produto Final?[Y/N]");
+        puts(mensagemConfirmacao);
+        char resposta[1 + 1];
+        readChar(resposta);
+        if (compareStrings(resposta, "Y") == true) {
+            create(linhaProdutoFinalClass);
+            guardarLinhaProdutoFinal(linhaProdutoFinalClass);
+        } else puts("Regressar ao menu gestao de linhaProdutoFinal");
+    }
 
 }
 
@@ -86,10 +91,10 @@ void removerLinhaProdutoFinal(Class *tipoUtilizadorClass, const unsigned short k
 }
 
 int * pesquisarLinhaProdutoFinal(Class *linhaProdutoFinalClass, const unsigned int campo, void *valorPesquisar, unsigned int *numeroResultados, char *sinal) {
-    FieldAux *aux; 
+    FieldAux *aux;
     aux = linhaProdutoFinalClass->auxStruct;
     int * chaves;
-    chaves=search(campo, valorPesquisar, linhaProdutoFinalClass->data, linhaProdutoFinalClass->auxStruct, (*linhaProdutoFinalClass->elements), linhaProdutoFinalClass->StructTypeSize, aux[campo].type, numeroResultados, sinal);
+    chaves = search(campo, valorPesquisar, linhaProdutoFinalClass->data, linhaProdutoFinalClass->auxStruct, (*linhaProdutoFinalClass->elements), linhaProdutoFinalClass->StructTypeSize, aux[campo].type, numeroResultados, sinal);
     return chaves;
 }
 

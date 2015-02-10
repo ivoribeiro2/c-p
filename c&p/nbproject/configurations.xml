@@ -7,6 +7,7 @@
       <itemPath>DataManagement.h</itemPath>
       <itemPath>cliente.h</itemPath>
       <itemPath>encomenda.h</itemPath>
+      <itemPath>file.h</itemPath>
       <itemPath>ingrediente.h</itemPath>
       <itemPath>linha_encomenda.h</itemPath>
       <itemPath>linha_produto_final.h</itemPath>
@@ -26,7 +27,7 @@
       <itemPath>DataManagement.c</itemPath>
       <itemPath>cliente.c</itemPath>
       <itemPath>encomenda.c</itemPath>
-      <itemPath>../../DataManagementAPI/files.c</itemPath>
+      <itemPath>file.c</itemPath>
       <itemPath>ingrediente.c</itemPath>
       <itemPath>linha_encomenda.c</itemPath>
       <itemPath>linha_produto_final.c</itemPath>
@@ -59,8 +60,6 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="../../DataManagementAPI/files.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="DataManagement.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="DataManagement.h" ex="false" tool="3" flavor2="0">
@@ -72,6 +71,10 @@
       <item path="encomenda.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="encomenda.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="file.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="file.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ingrediente.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -128,8 +131,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="../../DataManagementAPI/files.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="DataManagement.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="DataManagement.h" ex="false" tool="3" flavor2="0">
@@ -141,6 +142,10 @@
       <item path="encomenda.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="encomenda.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="file.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="file.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ingrediente.c" ex="false" tool="0" flavor2="0">
       </item>

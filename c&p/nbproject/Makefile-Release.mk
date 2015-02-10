@@ -35,10 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/1154515571/files.o \
 	${OBJECTDIR}/DataManagement.o \
 	${OBJECTDIR}/cliente.o \
 	${OBJECTDIR}/encomenda.o \
+	${OBJECTDIR}/file.o \
 	${OBJECTDIR}/ingrediente.o \
 	${OBJECTDIR}/linha_encomenda.o \
 	${OBJECTDIR}/linha_produto_final.o \
@@ -74,11 +74,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/c_p: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/c_p ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/1154515571/files.o: ../../DataManagementAPI/files.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1154515571
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1154515571/files.o ../../DataManagementAPI/files.c
-
 ${OBJECTDIR}/DataManagement.o: DataManagement.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -93,6 +88,11 @@ ${OBJECTDIR}/encomenda.o: encomenda.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/encomenda.o encomenda.c
+
+${OBJECTDIR}/file.o: file.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/file.o file.c
 
 ${OBJECTDIR}/ingrediente.o: ingrediente.c 
 	${MKDIR} -p ${OBJECTDIR}

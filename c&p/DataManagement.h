@@ -114,6 +114,7 @@ extern "C" {
         unsigned int minSize;
         unsigned int maxSize;
         void *substruct;
+        bool date;
     } FieldAux;
 
     /*

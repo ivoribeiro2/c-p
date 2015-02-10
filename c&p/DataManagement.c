@@ -3,6 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 /*DataManagement API implementation */
 
@@ -346,12 +347,12 @@ bool compare(DataType varType, void* varValue, DataType toCompareType, void * to
  * @return a pointer to an array with the keys founded , if 0 founded , return -1 in all array positions 
  */
 int * search(const unsigned int field, void *searchValue, void * list, FieldAux *aux, const unsigned int elementsNumber, const unsigned int structTypeSize, DataType searchValueType, unsigned int *resultCounter, char *signal) {
-    
+
     unsigned int i = 0, j = 0;
-    *resultCounter = 0; 
+    *resultCounter = 0;
     void *reg;
     int atributeValue = NULL;
-    
+
     static int resultKeys[MAX_RESULTS];
     for (i = 0; i < elementsNumber; i++) {
         reg = list + (structTypeSize * i);
@@ -600,7 +601,7 @@ void read(DataType type, void * field, const unsigned int maxSize) {
     }
 }
 
-void foreignKeyRead(FieldAux *aux, const unsigned short field) {
+bool foreignKeyRead(FieldAux *aux, const unsigned short field) {
 
     printString(aux[field].parentClass->name);
     puts("1-List / 2-New");
@@ -610,17 +611,16 @@ void foreignKeyRead(FieldAux *aux, const unsigned short field) {
         puts("");
         puts("__________________________________________________________________________");
         puts("__________________________________________________________________________");
-        //search(i,reg,aux[i].parentClass->data,aux[i].parentClass->auxStruct)
-        // parsedList(aux[i].parentClass->data,aux[1].parentClass->StructTypeSize,aux[i].parentClass->auxStruct,,aux[i].parentClass->elements,aux[1].parentClass->fieldsNumber)
         fullList(aux[field].parentClass);
         puts("__________________________________________________________________________");
         puts("__________________________________________________________________________");
         puts("");
     } else if (op == 2) {
-
         fullRead(aux[field].parentClass, CREATE, *(aux[field].parentClass->elements));
     }
+    return op;
 }
+//TODO setField
 
 void setField(DataType fieldType, void * field, void *value) {
     if (fieldType == SHORT) {
@@ -641,6 +641,7 @@ void setField(DataType fieldType, void * field, void *value) {
 
 void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
     unsigned i, j;
+    unsigned short op;
     FieldAux * aux = class->auxStruct;
     for (i = 0; i < field; ++i) {
         reg = reg + aux[i].sizeBytes;
@@ -649,24 +650,31 @@ void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
 
     //IF the request type is CREATE and the field is auto incremental will not request user data and set automat number (last reg number + step)
     if (rtype == CREATE && aux[i].autoIncrement == true) {
-        setField(type, reg, (*(class->elements) + aux[i].step));
+        unsigned short step;
+        step = (*(class->elements) + aux[i].step);
+        setField(type, reg, &step);
     } else {
         if (aux[i].type != STRUCT) {
             if (aux[i].foreignKey == true) {
-
-                foreignKeyRead(aux, i);
+                op = foreignKeyRead(aux, i);
             }
-            if (aux[i].required == true) {
-                do {
+            //SE não for chave estrangeira ou se for chave estrangeira e ter sido escolhida opção de listagem 
+            if (op == 0 || op == 1) {
+                if (aux[i].required == true) {
+                    do {
+                        printString(aux[i].alias);
+                        read(type, reg, aux[i].maxSize);
+                        puts("");
+                    } while (reg == NULL);
+
+                } else {
                     printString(aux[i].alias);
                     read(type, reg, aux[i].maxSize);
                     puts("");
-                } while (reg == NULL);
-
-            } else {
-                printString(aux[i].alias);
-                read(type, reg, aux[i].maxSize);
-                puts("");
+                }
+            } else if (op == 2) {
+                unsigned short lastReg = *(aux[field].parentClass->elements) + 1;
+                setField(type, reg, &lastReg);
             }
         }
     }
@@ -711,7 +719,7 @@ void singleParsedRead(Class *class, RequestType rtype, const unsigned int elemen
  * @param aux
  * @param fieldsNumber
  */
-void fullRead(Class * class, RequestType rType, const unsigned int element) {
+void fullRead(Class * class, RequestType rType, const unsigned short element) {
     unsigned int j = 0;
     for (j = 0; j < class->fieldsNumber; j++) {
         readRegistry(class, rType, elementMemoryAdress(class->data, class->StructTypeSize, element), j);
@@ -825,6 +833,16 @@ int * randomize(int *array, size_t n, int limit) {
     }
     return array;
 }
+
+time_t getUnixTime() {
+    time_t clk = time(NULL);
+    return clk;
+}
+
+void convertDate(time_t *unixTime) {
+    printf("%s", ctime(unixTime));
+
+};
 
 
 

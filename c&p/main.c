@@ -20,6 +20,8 @@
 #include "linha_encomenda.h"
 #include "producao.h"
 
+#include <time.h>
+
 /*
  * 
  */
@@ -165,7 +167,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxLinhaProdutoFinal = (sizeof (estructAuxLinhaProdutoFinal) / sizeof (estructAuxLinhaProdutoFinal[0]));
     const unsigned int tamTipoLinhaProdutoFinal = sizeof (ProdutoFinal);
 
-    Class linhaProdutoFinalClass = {.name = "Linha do Produto Final", .StructTypeSize = tamTipoLinhaProdutoFinal, .data = &linhasProdutoFinal, .auxStruct = &estructAuxLinhaProdutoFinal, .elements = &contadorLinhasProdutoFinal, .fieldsNumber = tamAuxLinhaProdutoFinal, .aliasField = ID_INGREDIENTE_LINHA_PRODUTO_FINAL};
+    Class linhaProdutoFinalClass = {.name = "Linha Produto Final", .StructTypeSize = tamTipoLinhaProdutoFinal, .data = &linhasProdutoFinal, .auxStruct = &estructAuxLinhaProdutoFinal, .elements = &contadorLinhasProdutoFinal, .fieldsNumber = tamAuxLinhaProdutoFinal, .aliasField = ID_INGREDIENTE_LINHA_PRODUTO_FINAL};
 
     strcpy(NomeFicheiro, "linhaProdutoFinal.txt");
     readFile(NomeFicheiro, &linhaProdutoFinalClass, MAX_LINHA_PRODUTO_FINAL);
@@ -178,8 +180,8 @@ int main(int argc, char** argv) {
     FieldAux estructAuxEncomenda[] = {
         {.fieldName = "id_encomenda", .alias = "Numero da Encomenda", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
         {.fieldName = "id_cliente", .alias = "Cliente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &clienteClass, .parentPrimaryKey = ID_CLIENTE},
-        {.fieldName = "data_encomenda", .alias = "Data Encomenda", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false},
-        {.fieldName = "data_entrega", .alias = "Data Entrega", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false},
+        {.fieldName = "data_encomenda", .alias = "Data Encomenda", .date = true, .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false},
+        {.fieldName = "data_entrega", .alias = "Data Entrega", .date = true, .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false},
 
     };
 
@@ -284,11 +286,13 @@ int main(int argc, char** argv) {
     //inserirUtilizador(classes.utilizadorClass);
     //listarUtilizadores(classes.utilizadorClass);
     // (*classes.utilizadorClass->elements)=0;
-    //listarUtilizador(classes.utilizadorClass, 0);
+    // listarUtilizador(classes.utilizadorClass, 0);
+    //listar_editar_utilizadores(classes.utilizadorClass);
     //printShort(classes.utilizadorClass->elements);
+    
+    //inserirCliente(classes.clienteClass);
 
-    // inserirCliente(classes.clienteClass);
-    // listarClientes(classes.clienteClass);
+    listarClientes(classes.clienteClass);
 
     //inserirUnidade(classes.unidadeClass);
     //listarUnidades(classes.unidadeClass);
@@ -299,29 +303,31 @@ int main(int argc, char** argv) {
     //inserirProdutoFinal(classes.produtoFinalClass);
     //listarProdutosFinais(classes.produtoFinalClass);
 
-    inserirLinhaProdutoFinal(classes.linhaProdutoFinalClass);
+    //inserirLinhaProdutoFinal(classes.linhaProdutoFinalClass);
     //listarLinhaProdutosFinais(classes.linhaProdutoFinalClass);
 
     //inserirEncomenda(classes.encomendaClass);
     //listarEncomendas(classes.encomendaClass);
 
     // inserirLinhaEncomenda(classes.linhaEncomendaClass);
-   // listarLinhaEncomendas(classes.linhaEncomendaClass);
+    // listarLinhaEncomendas(classes.linhaEncomendaClass);
 
 
     //inserirProducao(classes.producaoClass);
     //printShort(classes.producaoClass->elements);
     //listarProducoes(classes.producaoClass);
-    
-  listarProdutosFinais_LinhasProdutoFinal(classes.produtoFinalClass,classes.linhaProdutoFinalClass);
-    //listarProdutoFinal_LinhasProdutoFinal(classes.produtoFinalClass,classes.linhaProdutoFinalClass,0);
-    
-   // listar_Encomenda_linhaEncomenda_producao(classes.encomendaClass,classes.linhaEncomendaClass,classes.producaoClass);
-    
-    //listarProducao_Encomenda_LinhaEncomenda(classes.producaoClass,classes.linhaEncomendaClass,classes.produtoFinalClass,classes.linhaProdutoFinalClass);
-    
 
-    //system("clear");
+    //listarProdutosFinais_LinhasProdutoFinal(classes.produtoFinalClass,classes.linhaProdutoFinalClass);
+    //listarProdutoFinal_LinhasProdutoFinal(classes.produtoFinalClass,classes.linhaProdutoFinalClass,0);
+
+    // listar_Encomenda_linhaEncomenda_producao(classes.encomendaClass,classes.linhaEncomendaClass,classes.producaoClass);
+
+    //listarProducao_Encomenda_LinhaEncomenda(classes.producaoClass,classes.linhaEncomendaClass,classes.produtoFinalClass,classes.linhaProdutoFinalClass);
+
+
+    //time_t time=getUnixTime();
+    //convertDate(&time);
+
 
 
 

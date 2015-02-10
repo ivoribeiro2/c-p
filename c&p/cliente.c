@@ -3,6 +3,7 @@
 #include "cliente.h"
 #include <string.h>
 
+
 void guardarCliente(Class *clienteClass) {
     char NomeFicheiro[SHORT_STRING];
     strcpy(NomeFicheiro, "cliente.txt");
@@ -25,7 +26,6 @@ void filtrarClientes(Class *clienteClass, int *chaves, int numeroChaves, int *ca
 void filtrarCliente(Class *clienteClass, int chave, int *campos, int numeroCampos) {
     singleParsedList(clienteClass, chave, campos, numeroCampos);
 }
-
 
 void inserirCliente(Class *clienteClass) {
     char mensagemConfirmacao[MEDIUM_STRING];

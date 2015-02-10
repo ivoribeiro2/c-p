@@ -290,8 +290,8 @@ int main(int argc, char** argv) {
     //listar_editar_utilizadores(classes.utilizadorClass);
     //printShort(classes.utilizadorClass->elements);
     
-    //inserirCliente(classes.clienteClass);
-
+   inserirCliente(classes.clienteClass);
+    //removerCliente(classes.clienteClass,1);
     listarClientes(classes.clienteClass);
 
     //inserirUnidade(classes.unidadeClass);

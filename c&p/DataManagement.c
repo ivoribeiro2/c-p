@@ -624,10 +624,10 @@ bool foreignKeyRead(FieldAux *aux, const unsigned short field) {
 
 void setField(DataType fieldType, void * field, void *value) {
     if (fieldType == SHORT) {
-        * (short*) field = (short*) value;
+        * (short*) field = castShort(value) ;
     }
     if (fieldType == INT) {
-        * (int*) field = (int*) value;
+        * (int*) field =  castInt(value);
     }
 }
 
@@ -652,6 +652,7 @@ void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
     if (rtype == CREATE && aux[i].autoIncrement == true) {
         unsigned short step;
         step = (*(class->elements) + aux[i].step);
+        
         setField(type, reg, &step);
     } else {
         if (aux[i].type != STRUCT) {

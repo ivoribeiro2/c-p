@@ -36,7 +36,7 @@ void inserirCliente(Class *clienteClass) {
     if (compareStrings(resposta, "Y") == true) {
         create(clienteClass);
         guardarCliente(clienteClass);
-    } else puts("Regressar ao menu gestao de tipo de utilizador");
+    } else puts("Regressar ao menu cliente");
 
 }
 
@@ -73,15 +73,11 @@ void editarClientes(Class *clienteClass, const unsigned int *chaves, const unsig
 
 }
 
-void removerCliente(Class *tipoUtilizadorClass, const unsigned short key) {
-    puts("Tem a certeza que pertende remover o tipo de utilizador?[Y/N]");
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true || compareStrings(resposta, "y") == true) {
-        removeKey(tipoUtilizadorClass, key);
-        guardarTipoUtilizador(tipoUtilizadorClass);
-        puts("Tipo de utilizador removido com sucesso Obrigado");
-    } else puts("Menu eliminar tipo utilizador");
+void removerCliente(Class *clienteClass, const unsigned short key) {
+   
+        removeKey(clienteClass, key);
+        guardarCliente(clienteClass);
+        puts("Cliente removido com sucesso");
 }
 
 

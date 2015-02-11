@@ -73,18 +73,21 @@ void editarIngredientes(Class *ingredienteClass, const unsigned int *chaves, con
 
 }
 
-void removerIngrediente(Class *tipoUtilizadorClass, const unsigned short key) {
-    puts("Tem a certeza que pertende remover o ingrediente?[Y/N]");
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true || compareStrings(resposta, "y") == true) {
-        removeKey(tipoUtilizadorClass, key);
-        guardarTipoUtilizador(tipoUtilizadorClass);
+void removerIngrediente(Class *ingredienteClass, const unsigned short key) {
+        removeKey(ingredienteClass, key);
+        guardarIngrediente(ingredienteClass);
         puts("Tipo de utilizador removido com sucesso Obrigado");
-    } else puts("Menu eliminar ingrediente");
 }
 
 
-
-
-
+void listar_remover_ingrediente(Class *ingredienteClass) {
+    listarIngredientes(ingredienteClass);
+    puts("Escolha o ingrediente que quer remover");
+    unsigned int ingredienteID;
+    readInt(&ingredienteID);
+    Ingrediente *ingrediente;
+    ingrediente = ingredienteClass->data;
+    if (ingredienteID >= ingrediente[0].id_ingrediente && ingredienteID <= ingrediente[*(ingredienteClass->elements) - 1].id_ingrediente) {
+       removerIngrediente(ingredienteClass, ingredienteID - 1);
+    }
+}

@@ -126,7 +126,7 @@ void gestaoClientes(Class *clienteClass, Classes *classes) {
                 listar_editar_cliente(clienteClass);
                 break;
             case 4:
-                
+                listar_remover_cliente(clienteClass);
                 break;
             case 5:
                 gestaoAdmin(classes);
@@ -165,7 +165,7 @@ void gestaoIngredientes(Class *ingredientesClass, Classes *classes) {
                 listar_editar_ingrediente(ingredientesClass);
                 break;
             case 4:
-                puts("Remover Ingredientes");
+                listar_remover_ingrediente(ingredientesClass);
                 break;
             case 5:
                 gestaoAdmin(classes);
@@ -205,7 +205,7 @@ void gestaoUtilizadores(Class *utilizadorClass, Classes *classes) {
                 listar_editar_utilizadores(utilizadorClass);
                 break;
             case 4:
-                puts("Remover Utilizadores");
+                listar_remover_utilizador(utilizadorClass);
                 break;
             case 5:
                 gestaoAdmin(classes);
@@ -245,7 +245,7 @@ void gestaoUnidades(Class *unidadesClass, Classes *classes) {
                 listar_editar_unidade(unidadesClass);
                 break;
             case 4:
-                puts("Remover unidades");
+                listar_remover_unidade(unidadesClass);
                 break;
             case 5:
                 gestaoAdmin(classes);
@@ -264,6 +264,8 @@ void gestaoTipoUtilizadores(Class *tipoUtilizadorClass, Classes *classes) {
         puts("      1 - Listar Tipo Utilizadores");
         puts("      2 - Inserir Tipo Utilizadores");
         puts("      3 - Editar Tipo Utilizadores");
+        puts("      4 - Remover Tipo Utilizadores");
+        puts("      5 - Sair ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -273,7 +275,7 @@ void gestaoTipoUtilizadores(Class *tipoUtilizadorClass, Classes *classes) {
 
         switch (opcao) {
             case 1:
-                listarTipoUtilizador(tipoUtilizadorClass);
+                listarTipoUtilizadores(tipoUtilizadorClass);
                 voltar();
                 break;
             case 2:
@@ -283,7 +285,7 @@ void gestaoTipoUtilizadores(Class *tipoUtilizadorClass, Classes *classes) {
                 listar_editar_tipoUtilizadores(tipoUtilizadorClass);
                 break;
             case 4:
-                puts("Remover Tipo Utilizadores");
+                listar_remover_tipoUtilizador(tipoUtilizadorClass);
                 break;
             case 5:
                 menuLogin(classes);
@@ -305,6 +307,7 @@ void gestaoEncomenda(Class *encomendaClass, Classes *classes) {
         puts("      2 - Inserir Encomenda");
         puts("      3 - Editar Encomenda");
         puts("      4 - Remover Encomenda");
+        puts("      5 - Sair");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -324,7 +327,7 @@ void gestaoEncomenda(Class *encomendaClass, Classes *classes) {
                 listar_editar_encomenda(encomendaClass);
                 break;
             case 4:
-                puts("remover encomenda");
+                listar_remover_encomenda(encomendaClass);
                 break;
             case 5:
                 gestaoAdmin(classes);
@@ -356,7 +359,7 @@ void gestaoProducao(Class *producaoClass, Classes *classes) {
 
         switch (opcao) {
             case 1:
-                listarProducao(producaoClass);
+                listarProducoes(producaoClass);
                 voltar();
                 break;
             case 2:
@@ -366,7 +369,7 @@ void gestaoProducao(Class *producaoClass, Classes *classes) {
                 listar_editar_producao(producaoClass);
                 break;
             case 4:
-                puts("Remover Producao");
+                listar_remover_Producao(producaoClass);
                 break;
             case 5:
                 gestaoAdmin(classes);
@@ -407,7 +410,7 @@ void gestaoProdutoFinal(Class *produtoFinalClass, Classes *classes) {
                 listar_editar_produtoFinal(produtoFinalClass);
                 break;
             case 4:
-                puts("Remover Produto Final");
+                listar_remover_tipoUtilizador(produtoFinalClass);
                 break;
             case 5:
                 gestaoAdmin(classes);
@@ -449,7 +452,7 @@ void gestaoLinhaEncomenda(Class *linhaEncomendaClass, Classes *classes) {
                 listar_editar_linhaEncomenda(linhaEncomendaClass);
                 break;
             case 4:
-                puts("Remover Linha Encomenda");
+                listar_remover_linha_encomenda(linhaEncomendaClass);
                 break;
             case 5:
                 gestaoAdmin(classes);
@@ -459,7 +462,7 @@ void gestaoLinhaEncomenda(Class *linhaEncomendaClass, Classes *classes) {
 
 }
 
-void gestaoLinhaProducaoFinal(Class *linhaProducaoFinalClass, Classes *classes) {
+void gestaoLinhaProducaoFinal(Class *linhaProdutoFinalClass, Classes *classes) {
 
     unsigned short int opcao;
     do {
@@ -481,17 +484,17 @@ void gestaoLinhaProducaoFinal(Class *linhaProducaoFinalClass, Classes *classes) 
 
         switch (opcao) {
             case 1:
-                listarLinhaProdutosFinais(linhaProducaoFinalClass);
+                listarLinhaProdutosFinais(linhaProdutoFinalClass);
                 voltar();
                 break;
             case 2:
-                inserirLinhaProdutoFinal(linhaProducaoFinalClass);
+                inserirLinhaProdutoFinal(linhaProdutoFinalClass);
                 break;
             case 3:
-                listar_editar_linhaProdutoFinal(linhaProducaoFinalClass);
+                listar_editar_linhaProdutoFinal(linhaProdutoFinalClass);
                 break;
             case 4:
-                puts("Remover linha Produto Final");
+                listar_remover_linha_produto_final(linhaProdutoFinalClass);
                 break;
             case 5:
                 gestaoAdmin(classes);
@@ -516,7 +519,7 @@ void gestaoAdmin(Classes *classes) {
         puts("          4 -  Gestão de Utilizadores");
         puts("          5 -  Gestão de Unidades");
         puts("          6 -  Gestão Tipo Utilizador");
-        puts("          7 -  Gestãp Encomenta");
+        puts("          7 -  Gestão Encomenta");
         puts("          8 -  Gestão Producao");
         puts("          9 -  Gestão Produto Final");
         puts("          10 - Gestão Linha encomenda");
@@ -557,13 +560,17 @@ void gestaoAdmin(Classes *classes) {
             case 8:
                 gestaoProducao(classes->producaoClass, classes);
                 break;
-            case 9: gestaoProdutoFinal(classes->produtoFinalClass, classes);
+            case 9:
+                gestaoProdutoFinal(classes->produtoFinalClass, classes);
                 break;
-            case 10: gestaoLinhaEncomenda(classes->linhaEncomendaClass, classes);
+            case 10:
+                gestaoLinhaEncomenda(classes->linhaEncomendaClass, classes);
                 break;
-            case 11: gestaoLinhaProducaoFinal(classes->linhaProdutoFinalClass, classes);
+            case 11:
+                gestaoLinhaProducaoFinal(classes->linhaProdutoFinalClass, classes);
                 break;
-            case 12: menuLogin(classes);
+            case 12:
+                menuLogin(classes);
                 break;
         }
     } while (opcao != 12);

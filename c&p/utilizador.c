@@ -88,14 +88,21 @@ short pesquisarUtilizador(Class *utilizadorClass, const unsigned int campo, void
 }
 
 void removerUtilizador(Class *utilizadorClass, const unsigned short key) {
-    puts("Tem a certeza que pertende remover o utilizador?[Y/N]");
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true || compareStrings(resposta, "y") == true) {
         removeKey(utilizadorClass, key);
         guardarUtilizador(utilizadorClass);
         puts("utilizador removido com sucesso Obrigado");
-    } else puts("Menu eliminar utilizador");
+        voltar();
 }
 
+void listar_remover_utilizador(Class *utilizadorClass) {
+    listarUtilizadores(utilizadorClass);
+    puts("Escolha o Utilizador que quer remover");
+    unsigned int utilizadorID;
+    readInt(&utilizadorID);
+    Utilizador *utilizador;
+    utilizador = utilizadorClass->data;
+    if (utilizadorID >= utilizador[0].id_utilizador && utilizadorID <= utilizador[*(utilizadorClass->elements) - 1].id_utilizador) {
+       removerUtilizador(utilizadorClass, utilizadorID - 1);
+    }
+}
 

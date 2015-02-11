@@ -83,15 +83,23 @@ void editarLinhaEncomendas(Class *linhaEncomendaClass, const unsigned int *chave
 
 }
 
-void removerLinhaEncomenda(Class *tipoUtilizadorClass, const unsigned short key) {
-    puts("Tem a certeza que pertende remover o linhaEncomenda?[Y/N]");
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true || compareStrings(resposta, "y") == true) {
-        removeKey(tipoUtilizadorClass, key);
-        guardarTipoUtilizador(tipoUtilizadorClass);
-        puts("Tipo de utilizador removido com sucesso Obrigado");
-    } else puts("Menu eliminar linhaEncomenda");
+void removerLinhaEncomenda(Class *linhaEncomendaClass, const unsigned short key) {
+        removeKey(linhaEncomendaClass, key);
+        guardarLinhaEncomenda(linhaEncomendaClass);
+        puts("Linha Encomenda removido com sucesso Obrigado");
+}
+
+
+void listar_remover_linha_encomenda(Class *linhaEncomendaClass) {
+    listarLinhaEncomendas(linhaEncomendaClass);
+    puts("Escolha a Linha Encomenda que quer remover");
+    unsigned int linhaEncomendaID;
+    readInt(&linhaEncomendaID);
+    LinhaEncomenda *linhaEncomenda;
+    linhaEncomenda = linhaEncomendaClass->data;
+    if (linhaEncomendaID >= linhaEncomenda[0].id_linha_encomenda && linhaEncomendaID <= linhaEncomenda[*(linhaEncomendaClass->elements) - 1].id_linha_encomenda) {
+       removerLinhaEncomenda(linhaEncomendaClass, linhaEncomendaID - 1);
+    }
 }
 
 int * pesquisarLinhaEncomenda(Class *linhaEncomendaClass, const unsigned int campo, void *valorPesquisar, unsigned int *numeroResultados, char *sinal) {

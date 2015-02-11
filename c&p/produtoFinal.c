@@ -74,15 +74,22 @@ void editarProdutosFinais(Class *produtoFinalClass, const unsigned int *chaves, 
 
 }
 
-void removerProdutoFinal(Class *tipoUtilizadorClass, const unsigned short key) {
-    puts("Tem a certeza que pertende remover o produto final?[Y/N]");
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true || compareStrings(resposta, "y") == true) {
-        removeKey(tipoUtilizadorClass, key);
-        guardarTipoUtilizador(tipoUtilizadorClass);
+void removerProdutoFinal(Class *produtoFinalClass, const unsigned short key) {
+        removeKey(produtoFinalClass, key);
+        guardarProdutoFinal(produtoFinalClass);
         puts("Produto Final removido com sucesso Obrigado");
-    } else puts("Menu eliminar produto final");
+}
+
+void listar_remover_ProdutoFinal(Class *produtoFinalClass) {
+    listarProdutosFinais(produtoFinalClass);
+    puts("Escolha o Produto Final que quer remover");
+    unsigned int produtoFinalID;
+    readInt(&produtoFinalID);
+    ProdutoFinal *produtoFinal;
+    produtoFinal = produtoFinalClass->data;
+    if (produtoFinalID >= produtoFinal[0].id_produto_final && produtoFinalID <= produtoFinal[*(produtoFinalClass->elements) - 1].id_produto_final) {
+       removerProdutoFinal(produtoFinalClass, produtoFinalID - 1);
+    }
 }
 
 listarProdutosFinais_LinhasProdutoFinal(Class * produtoFinalClass, Class * linhaProdutoFinalClass) {

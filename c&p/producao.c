@@ -76,15 +76,23 @@ void editarProducoes(Class *producaoClass, const unsigned int *chaves, const uns
 
 }
 
-void removerProducao(Class *tipoUtilizadorClass, const unsigned short key) {
-    puts("Tem a certeza que pertende remover o producao?[Y/N]");
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true || compareStrings(resposta, "y") == true) {
-        removeKey(tipoUtilizadorClass, key);
-        guardarTipoUtilizador(tipoUtilizadorClass);
-        puts("Tipo de utilizador removido com sucesso Obrigado");
-    } else puts("Menu eliminar producao");
+void removerProducao(Class *producaoClass, const unsigned short key) {    
+        removeKey(producaoClass, key);
+        guardarProducao(producaoClass);
+        puts("Producao removido com sucesso Obrigado"); 
+}
+
+
+void listar_remover_Producao(Class *producaoClass) {
+    listarProducoes(producaoClass);
+    puts("Escolha a Producao que quer remover");
+    unsigned int producaoID;
+    readInt(&producaoID);
+    Producao *producao;
+    producao = producaoClass->data;
+    if (producaoID >= producao[0].id_producao && producaoID <= producao[*(producaoClass->elements) - 1].id_producao) {
+       removerProducao(producaoClass, producaoID - 1);
+    }
 }
 
 int * pesquisarProducao(Class *producaoClass, const unsigned int campo, void *valorPesquisar, unsigned int *numeroResultados, char *sinal) {

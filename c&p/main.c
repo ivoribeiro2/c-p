@@ -19,6 +19,7 @@
 #include "encomenda.h"
 #include "linha_encomenda.h"
 #include "producao.h"
+#include "classes.h"
 
 #include <time.h>
 
@@ -269,7 +270,7 @@ int main(int argc, char** argv) {
     //---------------------------------------------------------------------------------------------------------//
     //Checks
     //inserirTipoUtilizador(classes.tipoUtilizadorClass);
-    // listarTipoUtilizadores(classes.tipoUtilizadorClass);
+    //listarTipoUtilizadores(classes.tipoUtilizadorClass);
 
     //listarTipoUtilizador(classes.tipoUtilizadorClass,0);
     int chaves[] = {0, 1};
@@ -291,13 +292,11 @@ int main(int argc, char** argv) {
     //listar_editar_utilizadores(classes.utilizadorClass);
     //printShort(classes.utilizadorClass->elements);
     
- //inserirCliente(classes.clienteClass);
+    //inserirCliente(classes.clienteClass);
     //removerCliente(classes.clienteClass,1);
-   //listarClientes(classes.clienteClass);
+    //listarClientes(classes.clienteClass);
 
-    //inserirUnidade(classes.unidadeClass);
-    //listarUnidades(classes.unidadeClass);
-
+   
     // inserirIngrediente(classes.ingredienteClass);
     //listarIngredientes(classes.ingredienteClass);
 

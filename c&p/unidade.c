@@ -73,15 +73,24 @@ void editarUnidades(Class *unidadeClass, const unsigned int *chaves, const unsig
 
 }
 
-void removerUnidade(Class *tipoUtilizadorClass, const unsigned short key) {
-    puts("Tem a certeza que pertende remover o unidade?[Y/N]");
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true || compareStrings(resposta, "y") == true) {
-        removeKey(tipoUtilizadorClass, key);
-        guardarTipoUtilizador(tipoUtilizadorClass);
-        puts("Tipo de utilizador removido com sucesso Obrigado");
-    } else puts("Menu eliminar unidade");
+void removerUnidade(Class *unidadeClass, const unsigned short key) {
+        removeKey(unidadeClass, key);
+        guardarUnidade(unidadeClass);
+        puts("Unidade removida com sucesso Obrigado");
+        voltar();
+
 }
+void listar_remover_unidade(Class *unidadeClass) {
+    listarUnidades(unidadeClass);
+    puts("Escolha o Unidade que quer remover");
+    unsigned int unidadeID;
+    readInt(&unidadeID);
+    Unidade *unidade;
+    unidade = unidadeClass->data;
+    if (unidadeID >= unidade[0].id_unidade && unidadeID <= unidade[*(unidadeClass->elements) - 1].id_unidade) {
+       removerUnidade(unidadeClass, unidadeID - 1);
+    }
+}
+
 
 

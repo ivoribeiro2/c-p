@@ -74,14 +74,19 @@ void editarTipoUtilizadores(Class *tipoUtilizadorClass, const unsigned int *chav
 }
 
 void removerTipoUtilizador(Class *tipoUtilizadorClass, const unsigned short key) {
-    puts("Tem a certeza que pertende remover o tipo de utilizador?[Y/N]");
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true || compareStrings(resposta, "y") == true) {
         removeKey(tipoUtilizadorClass, key);
         guardarTipoUtilizador(tipoUtilizadorClass);
         puts("Tipo de utilizador removido com sucesso Obrigado");
-    } else puts("Menu eliminar tipo utilizador");
 }
 
-
+void listar_remover_tipoUtilizador(Class *tipoUtilizadorClass) {
+    listarTipoUtilizadores(tipoUtilizadorClass);
+    puts("Escolha o Tipo de Utilizador que quer remover");
+    unsigned int tipoUtilizadorID;
+    readInt(&tipoUtilizadorID);
+    TipoUtilizador *tipoUtilizador;
+    tipoUtilizador = tipoUtilizadorClass->data;
+    if (tipoUtilizadorID >= tipoUtilizador[0].id_tipo_utilizador && tipoUtilizadorID <= tipoUtilizador[*(tipoUtilizadorClass->elements) - 1].id_tipo_utilizador) {
+       removerTipoUtilizador(tipoUtilizadorClass, tipoUtilizadorID - 1);
+    }
+}

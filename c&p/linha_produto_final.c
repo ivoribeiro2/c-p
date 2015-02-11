@@ -79,16 +79,24 @@ void editarLinhaProdutosFinais(Class *linhaProdutoFinalClass, const unsigned int
 
 }
 
-void removerLinhaProdutoFinal(Class *tipoUtilizadorClass, const unsigned short key) {
-    puts("Tem a certeza que pertende remover o linhaProdutoFinal?[Y/N]");
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true || compareStrings(resposta, "y") == true) {
-        removeKey(tipoUtilizadorClass, key);
-        guardarTipoUtilizador(tipoUtilizadorClass);
-        puts("Tipo de utilizador removido com sucesso Obrigado");
-    } else puts("Menu eliminar linhaProdutoFinal");
+void removerLinhaProdutoFinal(Class *linhaProdutoFinalClass, const unsigned short key) {
+        removeKey(linhaProdutoFinalClass, key);
+        guardarLinhaProdutoFinal(linhaProdutoFinalClass);
+        puts("Linha Produto Final removido com sucesso Obrigado");
 }
+
+void listar_remover_linha_produto_final(Class *linhaProdutoFinalClass) {
+    listarLinhaProdutosFinais(linhaProdutoFinalClass);
+    puts("Escolha a Linha Produto Final que quer remover");
+    unsigned int linhaProdutoFinalID;
+    readInt(&linhaProdutoFinalID);
+    LinhaProdutoFinal *linhaProdutoFinal;
+    linhaProdutoFinal = linhaProdutoFinalClass->data;
+    if (linhaProdutoFinalID >= linhaProdutoFinal[0].id_linha_produto_final && linhaProdutoFinalID <= linhaProdutoFinal[*(linhaProdutoFinalClass->elements) - 1].id_linha_produto_final) {
+       removerLinhaProdutoFinal(linhaProdutoFinalClass, linhaProdutoFinalID - 1);
+    }
+}
+
 
 int * pesquisarLinhaProdutoFinal(Class *linhaProdutoFinalClass, const unsigned int campo, void *valorPesquisar, unsigned int *numeroResultados, char *sinal) {
     FieldAux *aux;

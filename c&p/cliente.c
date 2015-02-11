@@ -82,11 +82,24 @@ short pesquisarCliente(Class *clienteClass, const unsigned int campo, void *valo
 
 
 void removerCliente(Class *clienteClass, const unsigned short key) {
-   
         removeKey(clienteClass, key);
         guardarCliente(clienteClass);
         puts("Cliente removido com sucesso");
 }
+
+
+void listar_remover_cliente(Class *clienteClass) {
+    listarClientes(clienteClass);
+    puts("Escolha o Cliente que quer remover");
+    unsigned int clienteID;
+    readInt(&clienteID);
+    Cliente *cliente;
+    cliente = clienteClass->data;
+    if (clienteID >= cliente[0].id_cliente && clienteID <= cliente[*(clienteClass->elements) - 1].id_cliente) {
+       removerCliente(clienteClass, clienteID - 1);
+    }
+}
+
 
 
 

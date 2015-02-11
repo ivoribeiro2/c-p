@@ -13,12 +13,12 @@ extern "C" {
 #endif
 
 #include "DataManagement.h"
-
+#include <time.h>
     typedef struct {
         unsigned short id_encomenda;
         unsigned short id_cliente;
-        unsigned short data_encomenda;
-        unsigned short data_entrega;
+        time_t data_encomenda;
+        time_t data_entrega;
     } Encomenda;
     
     typedef enum {

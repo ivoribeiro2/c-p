@@ -79,6 +79,7 @@ extern "C" {
         unsigned short *elements;
         unsigned int fieldsNumber;
         unsigned int aliasField;
+        char fileName[SHORT_STRING];
     } Class;
 
     /*

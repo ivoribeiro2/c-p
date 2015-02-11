@@ -413,6 +413,16 @@ void singleParsedList(Class *class, const unsigned int key, int *fields, unsigne
     parsedList(class, keys, 1, fields, fieldsNumber);
 }
 
+time_t getUnixTime() {
+    time_t clk = time(NULL);
+    return clk;
+}
+
+void convertDate(time_t *unixTime) {
+    printf("%s", ctime(unixTime));
+
+};
+
 /**
  * This method list a field -> value of any Class data 
  * @param reg - Memory adress of some field 
@@ -427,13 +437,15 @@ void listRegistry(void * reg, FieldAux *aux, unsigned field) {
 
     DataType type = aux[i].type;
     if (type != STRUCT) {
-        if (aux[i].foreignKey == true) {
+        if (type == DATE) {
+
+        } else
+            if (aux[i].foreignKey == true) {
             unsigned int resultNumber;
             char signal[2 + 1];
             strcpy(signal, "==");
             int result = NO_VALUE;
             result = searchSingle(aux[i].parentClass, aux[i].parentPrimaryKey, reg, aux[i].type, &resultNumber, signal);
-            //result = search(aux[i].parentPrimaryKey, reg, aux[i].parentClass->data, aux[i].parentClass->auxStruct, *(aux[i].parentClass->elements), aux[i].parentClass->StructTypeSize, aux[i].type, &resultNumber, signal);
             if (result != NO_VALUE) {
                 int field[1];
                 field[0] = aux[i].parentClass->aliasField;
@@ -448,9 +460,8 @@ void listRegistry(void * reg, FieldAux *aux, unsigned field) {
                 print(type, reg);
             } else puts("No Value");
         }
-        puts("");
-
     }
+    puts("");
 }
 
 
@@ -617,6 +628,9 @@ bool foreignKeyRead(FieldAux *aux, const unsigned short field) {
         puts("");
     } else if (op == 2) {
         fullRead(aux[field].parentClass, CREATE, *(aux[field].parentClass->elements));
+        char nomeFicheiro[MEDIUM_STRING];
+        strcpy(nomeFicheiro, aux[field].parentClass->fileName);
+        writeFile(nomeFicheiro, aux[field].parentClass->name);
     }
     return op;
 }
@@ -624,10 +638,10 @@ bool foreignKeyRead(FieldAux *aux, const unsigned short field) {
 
 void setField(DataType fieldType, void * field, void *value) {
     if (fieldType == SHORT) {
-        * (short*) field = castShort(value) ;
+        * (short*) field = castShort(value);
     }
     if (fieldType == INT) {
-        * (int*) field =  castInt(value);
+        * (int*) field = castInt(value);
     }
 }
 
@@ -652,7 +666,7 @@ void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
     if (rtype == CREATE && aux[i].autoIncrement == true) {
         unsigned short step;
         step = (*(class->elements) + aux[i].step);
-        
+
         setField(type, reg, &step);
     } else {
         if (aux[i].type != STRUCT) {
@@ -663,15 +677,26 @@ void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
             if (op == 0 || op == 1) {
                 if (aux[i].required == true) {
                     do {
-                        printString(aux[i].alias);
-                        read(type, reg, aux[i].maxSize);
-                        puts("");
+                        if (aux[i].date == true) {
+                            printString(aux[i].alias);
+                            puts("Pedir a Data");
+
+                        } else {
+                            printString(aux[i].alias);
+                            read(type, reg, aux[i].maxSize);
+                            puts("");
+                        }
                     } while (reg == NULL);
 
                 } else {
-                    printString(aux[i].alias);
-                    read(type, reg, aux[i].maxSize);
-                    puts("");
+
+                    if (aux[i].date == true) {
+                        puts("Inserir Automaticamente Data");
+                    } else {
+                        printString(aux[i].alias);
+                        read(type, reg, aux[i].maxSize);
+                        puts("");
+                    }
                 }
             } else if (op == 2) {
                 unsigned short lastReg = *(aux[field].parentClass->elements) + 1;
@@ -835,15 +860,7 @@ int * randomize(int *array, size_t n, int limit) {
     return array;
 }
 
-time_t getUnixTime() {
-    time_t clk = time(NULL);
-    return clk;
-}
 
-void convertDate(time_t *unixTime) {
-    printf("%s", ctime(unixTime));
-
-};
 
 
 

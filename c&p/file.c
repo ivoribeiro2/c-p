@@ -17,7 +17,7 @@ void readFile(char *nome, Class *class, unsigned int tam_max) {
     }
 }
 
-void writeFile(char *nome, Class *class) {
+    void writeFile(char *nome, Class *class) {
     ap_ficheiro = fopen(nome, "w"); // Abre o ficheiro  em modo de escrita
     if (!ap_ficheiro) {
         printf("\n IMPOSSIVEL ABRIR O FICHEIRO."); // Se o apontador devolvido for inválido ocorreu um erro na leitura

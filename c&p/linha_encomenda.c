@@ -40,6 +40,15 @@ void inserirLinhaEncomenda(Class *linhaEncomendaClass) {
     } else puts("Regressar ao menu gestao de linhaEncomenda");
 
 }
+void inserirLinhaEncomendaEncomenda(Class *linhaEncomendaClass, unsigned short idEncomenda){
+    int camposLinhaEncomendaCliente[] = { ID_LINHA_ENCOMENDA, ID_PRODUTO_FINAL_LINHA_ENCOMENDA, QUANTIDADE_LINHA_ENCOMENDA};
+    singleParsedRead(linhaEncomendaClass, CREATE, *(linhaEncomendaClass->elements), camposLinhaEncomendaCliente, 3);
+    LinhaEncomenda *linhaEncomendas;
+    linhaEncomendas = linhaEncomendaClass->data;
+    (*linhaEncomendaClass->elements)++;
+    linhaEncomendas[*(linhaEncomendaClass->elements)-1].id_encomenda = idEncomenda;
+    guardarEncomenda(linhaEncomendaClass);
+}
 
 void filtrarEditarLinhaEncomenda(Class *linhaEncomendaClass, const unsigned int chave, const unsigned int *campos, const unsigned int numeroCampos) {
     singleParsedRead(linhaEncomendaClass, UPDATE, chave, campos, numeroCampos);

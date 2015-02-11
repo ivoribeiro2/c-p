@@ -135,7 +135,6 @@ void listarProducao_Encomenda_LinhaEncomenda(Class * producaoClass, Class* linha
 
             }
 
-
         } else puts("Não foram encontradas linhas do produto final");
     }
 };

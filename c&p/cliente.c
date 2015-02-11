@@ -73,6 +73,14 @@ void editarClientes(Class *clienteClass, const unsigned int *chaves, const unsig
 
 }
 
+short pesquisarCliente(Class *clienteClass, const unsigned int campo, void *valorPesquisar, DataType tipoValorPesquisar, unsigned int *nResultados, char *sinal){
+    
+    unsigned short chave = searchSingle(clienteClass, campo, valorPesquisar, tipoValorPesquisar,nResultados,sinal);
+    if(nResultados!=0)return chave;
+    else return NO_VALUE;
+}
+
+
 void removerCliente(Class *clienteClass, const unsigned short key) {
    
         removeKey(clienteClass, key);

@@ -265,6 +265,7 @@ int main(int argc, char** argv) {
     classes.linhaEncomendaClass = &linhaEncomendaClass;
     classes.producaoClass = &producaoClass;
 
+    menuLogin(&classes);
     //---------------------------------------------------------------------------------------------------------//
     //Checks
     //inserirTipoUtilizador(classes.tipoUtilizadorClass);

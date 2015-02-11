@@ -1,4 +1,3 @@
-
 #include "DataManagement.h"
 #include "encomenda.h"
 #include <string.h>
@@ -13,7 +12,6 @@ void guardarEncomenda(Class *encomendaClass) {
 
 void listarEncomendas(Class *encomendaClass) {
     fullList(encomendaClass);
-
 }
 
 void listarEncomenda(Class *encomendaClass, const unsigned int chave) {
@@ -39,6 +37,33 @@ void inserirEncomenda(Class *encomendaClass) {
         guardarEncomenda(encomendaClass);
     } else puts("Regressar ao menu gestao de tipo de utilizador");
 
+}
+
+void inserirEncomendaCliente(Class *encomendaClass, const unsigned short idCliente){
+    int camposEncomendaCliente[] = { ID_ENCOMENDA, DATA_ENCOMENDA, DATA_ENTREGA};
+    singleParsedRead(encomendaClass, CREATE, *(encomendaClass->elements), camposEncomendaCliente, 3);
+    Encomenda *encomendas;
+    encomendas = encomendaClass->data;
+    (*encomendaClass->elements)++;
+    encomendas[*(encomendaClass->elements)-1].id_cliente = idCliente;
+    guardarEncomenda(encomendaClass);
+    
+}
+
+void inserirEncomendaClienteLinhaEncomenda(Class *encomendaClass, Class *linhaEncomendaClass, const unsigned short idCliente){
+    inserirEncomendaCliente(encomendaClass, idCliente);
+    unsigned short numLinhas;
+    puts("Insira o numero de produtos que pretende inserir:");
+    readShort(&numLinhas);
+    unsigned short i, idEncomenda;
+    Encomenda *encomendas;
+    encomendas = encomendaClass->data;
+    encomendas[*(encomendaClass->elements)-1].id_encomenda = idEncomenda;
+    
+    for(i=0;i<numLinhas;i++){
+        inserirLinhaEncomendaEncomenda(linhaEncomendaClass, idEncomenda);       
+    }
+    
 }
 
 void filtrarEditarEncomenda(Class *encomendaClass, const unsigned int chave, const unsigned int *campos, const unsigned int numeroCampos) {
@@ -74,6 +99,14 @@ void editarEncomendas(Class *encomendaClass, const unsigned int *chaves, const u
 
 }
 
+int * pesquisarEncomendas(Class *encomendaClass, const unsigned int campo, void *valorPesquisar, unsigned int *numeroResultados, char *sinal) {
+    FieldAux *aux;
+    aux = encomendaClass->auxStruct;
+    int * chaves;
+    chaves = search(campo, valorPesquisar, encomendaClass->data, encomendaClass->auxStruct, (*encomendaClass->elements), encomendaClass->StructTypeSize, aux[campo].type, numeroResultados, sinal);
+    return chaves;
+}
+
 void removerEncomenda(Class *encomendaClass, const unsigned short key) {
     puts("Tem a certeza que pertende remover o tipo de utilizador?[Y/N]");
     char resposta[1 + 1];
@@ -96,7 +129,7 @@ void listar_Encomenda_linhaEncomenda_producao(Class * encomendaClass, Class * li
     producoes = producaoClass->data;
     LinhaEncomenda *linhasEncomenda;
     linhasEncomenda = linhaEncomendaClass->data;
-    int camposLinhaEncomenda[]={ID_PRODUTO_FINAL_LINHA_ENCOMENDA};
+    int camposLinhaEncomenda[] = {ID_PRODUTO_FINAL_LINHA_ENCOMENDA};
 
 
     int chaves[MAX_RESULTS];
@@ -143,7 +176,7 @@ void listar_Encomenda_linhaEncomenda_producao(Class * encomendaClass, Class * li
 
                     }
                     puts("------------------------------------Resumo Linha--------------------------------");
-                    filtrarLinhaEncomenda(linhaEncomendaClass,chaves[k],camposLinhaEncomenda,1);
+                    filtrarLinhaEncomenda(linhaEncomendaClass, chaves[k], camposLinhaEncomenda, 1);
                     puts("Unidades encomendadas");
                     printShort(&quantidade_linha_encomenda);
                     puts("Unidades produzidas");
@@ -160,6 +193,25 @@ void listar_Encomenda_linhaEncomenda_producao(Class * encomendaClass, Class * li
 
 }
 
+void listarEncomendasCliente(Class *encomendaClass, unsigned short idCliente) {
+    int *rIdEncomendas;
+    unsigned int nResultadosCliente;
+    char sinal[2 + 1];
+    strcpy(sinal, "==");
+    rIdEncomendas = pesquisarEncomendas(encomendaClass, ID_CLIENTE_ENCOMENDA, &idCliente, &nResultadosCliente, &sinal);
+    int a, s, chavesIdEncomendas[MAX_RESULTS];
 
+    for (a = 0; a < nResultadosCliente; a++) {
+        chavesIdEncomendas[a] = *(rIdEncomendas + a);
+    }
+    puts("----------------------------------Encomendas do Cliente-------------------------------------");
 
+    for (s = 0; s < nResultadosCliente; s++) {
+        puts("------------------------------------Encomenda---------------------------------------");
+        listarEncomenda(encomendaClass, chavesIdEncomendas[s]);
+        puts("--------------------------------------------------------------------------------");
 
+    }
+    puts("--------------------------------------------------------------------------------");
+
+}

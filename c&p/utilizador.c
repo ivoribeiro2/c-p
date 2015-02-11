@@ -72,6 +72,20 @@ void editarUtilizadores(Class *utilizadorClass, const unsigned int *chaves, cons
     guardarUtilizador(utilizadorClass);
 
 }
+int * pesquisarUtilizadores(Class *utilizadorClass, const unsigned int campo, void *valorPesquisar, unsigned int *numeroResultados, char *sinal) {
+    FieldAux *aux;
+    aux = utilizadorClass->auxStruct;
+    int * chaves;
+    chaves = search(campo, valorPesquisar, utilizadorClass->data, utilizadorClass->auxStruct, (*utilizadorClass->elements), utilizadorClass->StructTypeSize, aux[campo].type, numeroResultados, sinal);
+    return chaves;
+}
+
+short pesquisarUtilizador(Class *utilizadorClass, const unsigned int campo, void *valorPesquisar, DataType tipoValorPesquisar, unsigned int *nResultados, char *sinal){
+    
+    unsigned short chave = searchSingle(utilizadorClass, campo, valorPesquisar, tipoValorPesquisar,nResultados,sinal);
+    if(nResultados!=0)return chave;
+    else return NO_VALUE;
+}
 
 void removerUtilizador(Class *utilizadorClass, const unsigned short key) {
     puts("Tem a certeza que pertende remover o utilizador?[Y/N]");

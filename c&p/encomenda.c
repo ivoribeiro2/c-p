@@ -108,15 +108,26 @@ int * pesquisarEncomendas(Class *encomendaClass, const unsigned int campo, void 
 }
 
 void removerEncomenda(Class *encomendaClass, const unsigned short key) {
-    puts("Tem a certeza que pertende remover o tipo de utilizador?[Y/N]");
-    char resposta[1 + 1];
-    readChar(resposta);
-    if (compareStrings(resposta, "Y") == true || compareStrings(resposta, "y") == true) {
         removeKey(encomendaClass, key);
         guardarTipoUtilizador(encomendaClass);
         puts("Encomenda removido com sucesso Obrigado");
-    } else puts("Menu eliminar encomenda");
 }
+
+
+void listar_remover_encomenda(Class *encomendaClass) {
+    listarEncomendas(encomendaClass);
+    puts("Escolha a Encomenda que quer remover");
+    unsigned int encomendaID;
+    readInt(&encomendaID);
+    Encomenda *encomenda;
+    encomenda = encomendaClass->data;
+    if (encomendaID >= encomenda[0].id_encomenda && encomendaID <= encomenda[*(encomendaClass->elements) - 1].id_encomenda) {
+       removerEncomenda(encomendaClass, encomendaID - 1);
+    }
+}
+
+
+
 
 void listar_Encomenda_linhaEncomenda_producao(Class * encomendaClass, Class * linhaEncomendaClass, Class * producaoClass) {
     unsigned short i, j, k, l, m, id_encomenda, id_linha_encomenda, producao_encomenda, total_producao_encomenda, quantidade_linha_encomenda;

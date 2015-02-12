@@ -30,7 +30,7 @@ void filtrarLinhaEncomenda(Class *linhaEncomendaClass, int chave, int *campos, i
 
 void inserirLinhaEncomenda(Class *linhaEncomendaClass) {
     char mensagemConfirmacao[MEDIUM_STRING];
-    strcpy(mensagemConfirmacao, "Tem a certeza que pertende inserir um novo linhaEncomenda?[Y/N]");
+    strcpy(mensagemConfirmacao, "Tem a certeza que pertende inserir uma nova linhaEncomenda?[Y/N]");
     puts(mensagemConfirmacao);
     char resposta[1 + 1];
     readChar(resposta);

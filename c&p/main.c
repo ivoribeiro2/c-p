@@ -115,7 +115,7 @@ int main(int argc, char** argv) {
     //---------------------------------------------------------------------------------------------------------//
     //Ingredientes
 
-    const unsigned MAX_INGREDIENTES = 10;
+    const unsigned MAX_INGREDIENTES = 20;
 
     FieldAux estructAuxIngredientes[] = {
         {.fieldName = "id_ingrediente", .alias = "Numero de Ingrediente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
@@ -280,6 +280,9 @@ int main(int argc, char** argv) {
     classes.linhaEncomendaClass = &linhaEncomendaClass;
     classes.producaoClass = &producaoClass;
 
+    puts("Administrador:                        Cliente:");
+    puts("Login: a                              Login: c");
+    puts("Password: 1234                        Password 1234");
     menuLogin(&classes);
     //---------------------------------------------------------------------------------------------------------//
     //Checks

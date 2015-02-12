@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/linha_encomenda.o \
 	${OBJECTDIR}/linha_produto_final.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/menu.o \
 	${OBJECTDIR}/producao.o \
 	${OBJECTDIR}/produtoFinal.o \
 	${OBJECTDIR}/tipo_utilizador.o \
@@ -113,6 +114,11 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/menu.o: menu.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/menu.o menu.c
 
 ${OBJECTDIR}/producao.o: producao.c 
 	${MKDIR} -p ${OBJECTDIR}

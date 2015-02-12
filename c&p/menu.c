@@ -52,6 +52,50 @@ void gestaoClientesEncomendas(Classes *classes, unsigned short idCliente) {
     } while (opcao != 3);
 }
 
+void relatorios(Classes *classes){
+    unsigned short int opcao;
+    do {
+        clearscreen();
+        puts("                                                          ");
+        puts("                  Relatórios                              ");
+        puts("                                                          ");
+        puts("                  1 - Encomendas Pendentes                ");
+        puts("                  2 - Listagem das Encomendas por Secao   ");
+        puts("                  3 - Listagem de Produtos Encomendados   ");
+        puts("                  4 - Relatorios mensais/anuais           ");
+        puts("                  5 - Sair                                ");
+        puts("                                                          ");
+        puts("                                                          ");
+
+        do {
+            puts("Insira o valor da opção pretendida:");
+            readInt(&opcao);
+
+        } while (opcao < 0 || opcao > 6);
+
+        switch (opcao) {
+            case 1:
+                puts("");
+                voltar();
+                break;
+            case 2:
+                puts("");
+                voltar();
+                break;
+            case 3:
+                puts("");
+                voltar();
+                break;
+            case 4:
+                puts("");
+                break;
+            
+            case 5:
+                gestaoGestores(classes);
+                break;
+        }
+    } while (opcao != 5);
+}
 //---------------------------------Gestores----------------------------------//
 
 void gestaoGestores(Classes *classes) {
@@ -65,7 +109,9 @@ void gestaoGestores(Classes *classes) {
         puts("                  1 - Documento Produto Final             ");
         puts("                  2 - Documento Encomenda                 ");
         puts("                  3 - Documento Pre-Producao              ");
-        puts("                  4 - Sair                                ");
+        puts("                  4 - Inserir Encomenda                   ");
+        puts("                  5 - Relatórios                          ");
+        puts("                  6 - Sair                                ");
         puts("                                                          ");
         puts("                                                          ");
 
@@ -73,7 +119,7 @@ void gestaoGestores(Classes *classes) {
             puts("Insira o valor da opção pretendida:");
             readInt(&opcao);
 
-        } while (opcao < 0 || opcao > 4);
+        } while (opcao < 0 || opcao > 6);
 
         switch (opcao) {
             case 1:
@@ -89,10 +135,16 @@ void gestaoGestores(Classes *classes) {
                 voltar();
                 break;
             case 4:
+                inserirEncomendaAdminLinhaEncomenda(classes->encomendaClass, classes->clienteClass, classes->linhaEncomendaClass);
+                break;
+            case 5:
+                relatorios(classes);
+                break;
+            case 6:
                 gestaoAdmin(classes);
                 break;
         }
-    } while (opcao != 4);
+    } while (opcao != 6);
 }
 
 
@@ -337,7 +389,7 @@ void gestaoEncomenda(Class *encomendaClass, Classes *classes) {
                 voltar();
                 break;
             case 2:
-                inserirEncomendaAdminLinhaEncomenda(encomendaClass, classes->clienteClass, classes->linhaEncomendaClass);
+                inserirEncomenda(encomendaClass);
                 break;
             case 3:
                 listar_editar_encomenda(encomendaClass);
@@ -430,7 +482,7 @@ void gestaoProdutoFinal(Class *produtoFinalClass, Classes *classes) {
                 listar_editar_produtoFinal(produtoFinalClass);
                 break;
             case 4:
-                listar_remover_tipoUtilizador(produtoFinalClass);
+                listar_remover_ProdutoFinal(produtoFinalClass);
                 break;
             case 5:
                 gestaoAdmin(classes);
@@ -538,16 +590,16 @@ void gestaoAdmin(Classes *classes) {
         puts("                                                           ");
         puts("                                                           ");
         puts("                  1 -  Menu de Gestores                    ");
-        puts("                  2 -  Gestão Clientes                     ");
-        puts("                  3 -  Gestão Ingredientes                 ");
-        puts("                  4 -  Gestão de Utilizadores              ");
-        puts("                  5 -  Gestão de Unidades                  ");
-        puts("                  6 -  Gestão Tipo Utilizador              ");
-        puts("                  7 -  Gestão Encomenta                    ");
-        puts("                  8 -  Gestão Producao                     ");
-        puts("                  9 -  Gestão Produto Final                ");
-        puts("                  10 - Gestão Linha encomenda              ");
-        puts("                  11 - Gestão Linha Produção final         ");
+        puts("                  2 -  Gestão Tipo Utilizador              ");
+        puts("                  3 -  Gestão Utilizadores                 ");
+        puts("                  4 -  Gestão Clientes                     ");
+        puts("                  5 -  Gestão Unidades                     ");
+        puts("                  6 -  Gestão Ingrediente                  ");
+        puts("                  7 -  Gestão Produto Final                ");
+        puts("                  8 -  Gestão Linha Produto Fincal         ");
+        puts("                  9 -  Gestão Encomenda                    ");
+        puts("                  10 - Gestão Linha Encomenda              ");
+        puts("                  11 - Gestão Produção                     ");
         puts("                  12 - Sair                                ");
         puts("                                                           ");
         puts("                                                           ");
@@ -564,34 +616,34 @@ void gestaoAdmin(Classes *classes) {
                 gestaoGestores(classes);
                 break;
             case 2:
-                gestaoClientes(classes->clienteClass, classes);
+                gestaoTipoUtilizadores(classes->tipoUtilizadorClass, classes);
                 break;
             case 3:
-                gestaoIngredientes(classes->ingredienteClass, classes);
+                gestaoUtilizadores(classes->utilizadorClass, classes);
                 break;
             case 4:
-                gestaoUtilizadores(classes->utilizadorClass, classes);
+                gestaoClientes(classes->clienteClass, classes);
                 break;
             case 5:
                 gestaoUnidades(classes->unidadeClass, classes);
                 break;
             case 6:
-                gestaoTipoUtilizadores(classes->tipoUtilizadorClass, classes);
+                gestaoIngredientes(classes->ingredienteClass, classes);
                 break;
             case 7:
-                gestaoEncomenda(classes->encomendaClass, classes);
+                gestaoProdutoFinal(classes->produtoFinalClass, classes);
                 break;
             case 8:
-                gestaoProducao(classes->producaoClass, classes);
+                gestaoLinhaProducaoFinal(classes->linhaProdutoFinalClass, classes);
                 break;
             case 9:
-                gestaoProdutoFinal(classes->produtoFinalClass, classes);
+                gestaoEncomenda(classes->encomendaClass, classes);
                 break;
             case 10:
                 gestaoLinhaEncomenda(classes->linhaEncomendaClass, classes);
                 break;
             case 11:
-                gestaoLinhaProducaoFinal(classes->linhaProdutoFinalClass, classes);
+                gestaoProducao(classes->producaoClass, classes);
                 break;
             case 12:
                 menuLogin(classes);
@@ -602,6 +654,11 @@ void gestaoAdmin(Classes *classes) {
 
 void menuLogin(Classes *classes) {
     clearscreen();
+    puts("Administrador:                        Cliente:");
+    puts("Login: a                              Login: c");
+    puts("Password: 1234                        Password: qwer");
+    puts("");
+    puts("------------------------------------------------------");
     Utilizador * utilizadores;
     utilizadores = classes->utilizadorClass->data;
     Cliente * clientes;
@@ -611,7 +668,7 @@ void menuLogin(Classes *classes) {
     puts("                      ");
     puts("          Login       ");
     puts("                      ");
-    puts("Nome de Utilizador:");
+    puts("User:");
     readString(&nome, TAM_STRING);
 
 

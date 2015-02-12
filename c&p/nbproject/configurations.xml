@@ -5,12 +5,14 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>DataManagement.h</itemPath>
+      <itemPath>Date.h</itemPath>
+      <itemPath>classes.h</itemPath>
       <itemPath>cliente.h</itemPath>
       <itemPath>encomenda.h</itemPath>
-      <itemPath>file.h</itemPath>
       <itemPath>ingrediente.h</itemPath>
       <itemPath>linha_encomenda.h</itemPath>
       <itemPath>linha_produto_final.h</itemPath>
+      <itemPath>menu.h</itemPath>
       <itemPath>producao.h</itemPath>
       <itemPath>produto_final.h</itemPath>
       <itemPath>tipo_utilizador.h</itemPath>
@@ -32,11 +34,23 @@
       <itemPath>linha_encomenda.c</itemPath>
       <itemPath>linha_produto_final.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>menu.c</itemPath>
       <itemPath>producao.c</itemPath>
       <itemPath>produtoFinal.c</itemPath>
       <itemPath>tipo_utilizador.c</itemPath>
       <itemPath>unidade.c</itemPath>
       <itemPath>utilizador.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -64,6 +78,8 @@
       </item>
       <item path="DataManagement.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Date.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="cliente.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="cliente.h" ex="false" tool="3" flavor2="0">
@@ -73,8 +89,6 @@
       <item path="encomenda.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="file.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="file.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ingrediente.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -89,6 +103,10 @@
       <item path="linha_produto_final.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="producao.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -135,6 +153,8 @@
       </item>
       <item path="DataManagement.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Date.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="cliente.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="cliente.h" ex="false" tool="3" flavor2="0">
@@ -144,8 +164,6 @@
       <item path="encomenda.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="file.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="file.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ingrediente.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -160,6 +178,10 @@
       <item path="linha_produto_final.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="menu.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="producao.c" ex="false" tool="0" flavor2="0">
       </item>

@@ -28,6 +28,8 @@ void gestaoClientesEncomendas(Classes *classes, unsigned short idCliente) {
         puts("                  1 - Inserir Encomenda                   ");
         puts("                  2 - Listar Encomendas Processadas       ");
         puts("                  3-  Sair                                ");
+        puts("                                                          ");
+        puts("                                                          ");
         do {
             puts("Insira o valor da opção pretendida:");
             readInt(&opcao);
@@ -64,6 +66,8 @@ void gestaoGestores(Classes *classes) {
         puts("                  2 - Documento Encomenda                 ");
         puts("                  3 - Documento Pre-Producao              ");
         puts("                  4 - Sair                                ");
+        puts("                                                          ");
+        puts("                                                          ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -107,6 +111,8 @@ void gestaoClientes(Class *clienteClass, Classes *classes) {
         puts("                  3 - Editar Cliente                      ");
         puts("                  4 - Remover Cliente                     ");
         puts("                  5 - Sair                                ");
+        puts("                                                          ");
+        puts("                                                          ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -146,6 +152,8 @@ void gestaoIngredientes(Class *ingredientesClass, Classes *classes) {
         puts("                  3 - Editar Ingrediente                      ");
         puts("                  4 - Remover Ingrediente                     ");
         puts("                  5 - Sair                                    ");
+        puts("                                                              ");
+        puts("                                                              ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -186,6 +194,8 @@ void gestaoUtilizadores(Class *utilizadorClass, Classes *classes) {
         puts("                  3 - Editar Utilizadores                 ");
         puts("                  4 - Remover Utilizadores                ");
         puts("                  5 - Sair                                ");
+        puts("                                                          ");
+        puts("                                                          ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -226,6 +236,8 @@ void gestaoUnidades(Class *unidadesClass, Classes *classes) {
         puts("                  3 - Editar Unidades                     ");
         puts("                  4 - Remover Unidades                    ");
         puts("                  5 - Sair                                ");
+        puts("                                                          ");
+        puts("                                                          ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -266,6 +278,8 @@ void gestaoTipoUtilizadores(Class *tipoUtilizadorClass, Classes *classes) {
         puts("                  3 - Editar Tipo Utilizadores            ");
         puts("                  4 - Remover Tipo Utilizadores           ");
         puts("                  5 - Sair                                ");
+        puts("                                                          ");
+        puts("                                                          ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -288,7 +302,7 @@ void gestaoTipoUtilizadores(Class *tipoUtilizadorClass, Classes *classes) {
                 listar_remover_tipoUtilizador(tipoUtilizadorClass);
                 break;
             case 5:
-                menuLogin(classes);
+                gestaoAdmin(classes);
                 break;
         }
     } while (opcao != 5);
@@ -308,6 +322,8 @@ void gestaoEncomenda(Class *encomendaClass, Classes *classes) {
         puts("                  3 - Editar Encomenda                    ");
         puts("                  4 - Remover Encomenda                   ");
         puts("                  5 - Sair                                ");
+        puts("                                                          ");
+        puts("                                                          ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -321,7 +337,7 @@ void gestaoEncomenda(Class *encomendaClass, Classes *classes) {
                 voltar();
                 break;
             case 2:
-                inserirEncomenda(encomendaClass);
+                inserirEncomendaAdminLinhaEncomenda(encomendaClass, classes->clienteClass, classes->linhaEncomendaClass);
                 break;
             case 3:
                 listar_editar_encomenda(encomendaClass);
@@ -346,10 +362,12 @@ void gestaoProducao(Class *producaoClass, Classes *classes) {
         puts("                  Gestão de Produção                      ");
         puts("                                                          ");
         puts("                  1 - Listar Produção                     ");
-        puts("                  2 - Inserir Produção");
-        puts("                  3 - Editar Produção");
-        puts("                  4 - Remover Produção");
-        puts("                  5 - Sair");
+        puts("                  2 - Inserir Produção                    ");
+        puts("                  3 - Editar Produção                     ");
+        puts("                  4 - Remover Produção                    ");
+        puts("                  5 - Sair                                ");
+        puts("                                                          ");
+        puts("                                                          ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -383,14 +401,16 @@ void gestaoProdutoFinal(Class *produtoFinalClass, Classes *classes) {
     unsigned short int opcao;
     do {
         clearscreen();
-        puts("");
-        puts("      Gestão de Produto Final");
-        puts("");
-        puts("      1 - Listar Produto Final");
-        puts("      2 - Inserir Produto Final");
-        puts("      3 - Editar Produto Final");
-        puts("      4 - Remover Produto Final");
-        puts("      5 - Sair");
+        puts("                                                           ");
+        puts("                  Gestão de Produto Final                  ");
+        puts("                                                           ");
+        puts("                  1 - Listar Produto Final                 ");
+        puts("                  2 - Inserir Produto Final                ");
+        puts("                  3 - Editar Produto Final                 ");
+        puts("                  4 - Remover Produto Final                ");
+        puts("                  5 - Sair                                 ");
+        puts("                                                           ");
+        puts("                                                           ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -425,14 +445,16 @@ void gestaoLinhaEncomenda(Class *linhaEncomendaClass, Classes *classes) {
     unsigned short int opcao;
     do {
         clearscreen();
-        puts("");
-        puts("      Gestão de Linha Encomenda");
-        puts("");
-        puts("      1 - Listar Linha Encomenda");
-        puts("      2 - Inserir Linha Encomenda");
-        puts("      3 - Editar Linha Encomenda");
-        puts("      4 - Remover Linha Encomenda");
-        puts("      5 - Sair");
+        puts("                                                          ");
+        puts("                  Gestão de Linha Encomenda               ");
+        puts("                                                          ");
+        puts("                  1 - Listar Linha Encomenda              ");
+        puts("                  2 - Inserir Linha Encomenda             ");
+        puts("                  3 - Editar Linha Encomenda              ");
+        puts("                  4 - Remover Linha Encomenda             ");
+        puts("                  5 - Sair                                ");
+        puts("                                                           ");
+        puts("                                                           ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -467,14 +489,16 @@ void gestaoLinhaProducaoFinal(Class *linhaProdutoFinalClass, Classes *classes) {
     unsigned short int opcao;
     do {
         clearscreen();
-        puts("");
-        puts("      Gestão de Linhas Producao Final");
-        puts("");
-        puts("      1 - Listar Linhas Producao Final");
-        puts("      2 - Inserir Linhas Producao Final");
-        puts("      3 - Editar Linhas Produção Final");
-        puts("      4 - Remover Linhas Produção Final");
-        puts("      5 - Sair");
+        puts("                                                              ");
+        puts("                  Gestão de Linhas Producao Final             ");
+        puts("                                                              ");
+        puts("                  1 - Listar Linhas Producao Final            ");
+        puts("                  2 - Inserir Linhas Producao Final           ");
+        puts("                  3 - Editar Linhas Produção Final            ");
+        puts("                  4 - Remover Linhas Produção Final           ");
+        puts("                  5 - Sair                                    ");
+        puts("                                                           ");
+        puts("                                                           ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -508,25 +532,25 @@ void gestaoAdmin(Classes *classes) {
     int opcao;
     do {
         clearscreen();
-        puts("                                                     ");
-        puts("                                                     ");
-        puts("              MENU ADMINISTRAÇÃO                     ");
-        puts("                                                     ");
-        puts("                                                     ");
-        puts("          1 -  Menu de Gestores");
-        puts("          2 -  Gestão Clientes");
-        puts("          3 -  Gestão Ingredientes");
-        puts("          4 -  Gestão de Utilizadores");
-        puts("          5 -  Gestão de Unidades");
-        puts("          6 -  Gestão Tipo Utilizador");
-        puts("          7 -  Gestão Encomenta");
-        puts("          8 -  Gestão Producao");
-        puts("          9 -  Gestão Produto Final");
-        puts("          10 - Gestão Linha encomenda");
-        puts("          11 - Gestão Linha Produção final");
-        puts("          12 - Sair");
-        puts("                                                     ");
-        puts("                                                     ");
+        puts("                                                           ");
+        puts("                                                           ");
+        puts("                  MENU ADMINISTRAÇÃO                       ");
+        puts("                                                           ");
+        puts("                                                           ");
+        puts("                  1 -  Menu de Gestores                    ");
+        puts("                  2 -  Gestão Clientes                     ");
+        puts("                  3 -  Gestão Ingredientes                 ");
+        puts("                  4 -  Gestão de Utilizadores              ");
+        puts("                  5 -  Gestão de Unidades                  ");
+        puts("                  6 -  Gestão Tipo Utilizador              ");
+        puts("                  7 -  Gestão Encomenta                    ");
+        puts("                  8 -  Gestão Producao                     ");
+        puts("                  9 -  Gestão Produto Final                ");
+        puts("                  10 - Gestão Linha encomenda              ");
+        puts("                  11 - Gestão Linha Produção final         ");
+        puts("                  12 - Sair                                ");
+        puts("                                                           ");
+        puts("                                                           ");
 
         do {
             puts("Insira o valor da opção pretendida:");
@@ -636,6 +660,3 @@ void menuLogin(Classes *classes) {
     }
 
 }
-
-
-

@@ -3,6 +3,7 @@
 #include <string.h>
 #include "linha_encomenda.h"
 #include "producao.h"
+#include "cliente.h"
 
 void guardarEncomenda(Class *encomendaClass) {
     char NomeFicheiro[SHORT_STRING];
@@ -66,6 +67,19 @@ void inserirEncomendaClienteLinhaEncomenda(Class *encomendaClass, Class *linhaEn
     
 }
 
+void inserirEncomendaAdminLinhaEncomenda(Class *encomendaClass, Class *clienteClass, Class *linhaEncomendaClass){
+    listarClientes(clienteClass);
+    puts("Escolha o Cliente da encomenda");
+    const unsigned short clienteID;
+    readInt(&clienteID);
+    Cliente *cliente;
+    cliente = clienteClass->data;
+    if (clienteID >= cliente[0].id_cliente && clienteID <= cliente[*(clienteClass->elements) - 1].id_cliente) {
+        inserirEncomendaClienteLinhaEncomenda(encomendaClass, linhaEncomendaClass, clienteID - 1);
+    }
+    
+}
+
 void filtrarEditarEncomenda(Class *encomendaClass, const unsigned int chave, const unsigned int *campos, const unsigned int numeroCampos) {
     singleParsedRead(encomendaClass, UPDATE, chave, campos, numeroCampos);
     guardarEncomenda(encomendaClass);
@@ -109,7 +123,7 @@ int * pesquisarEncomendas(Class *encomendaClass, const unsigned int campo, void 
 
 void removerEncomenda(Class *encomendaClass, const unsigned short key) {
         removeKey(encomendaClass, key);
-        guardarTipoUtilizador(encomendaClass);
+        guardarEncomenda(encomendaClass);
         puts("Encomenda removido com sucesso Obrigado");
 }
 

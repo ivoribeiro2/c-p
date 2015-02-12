@@ -423,6 +423,20 @@ void convertDate(time_t *unixTime) {
 
 };
 
+void listSubStruct(FieldAux *mainAux, const unsigned short field, void *reg) {
+    unsigned short j;
+    Class *subStructClass;
+    subStructClass = mainAux[field].substructClass;
+    FieldAux *substructAux;
+    substructAux = subStructClass->auxStruct;
+    for (j = 0; j < subStructClass->fieldsNumber; ++j) {
+        reg = reg + substructAux[j].sizeBytes;
+        printString(substructAux[j].alias);
+        print(substructAux[j].type, reg);
+        puts("");
+    }
+}
+
 /**
  * This method list a field -> value of any Class data 
  * @param reg - Memory adress of some field 
@@ -437,10 +451,8 @@ void listRegistry(void * reg, FieldAux *aux, unsigned field) {
 
     DataType type = aux[i].type;
     if (type != STRUCT) {
-        if (type == DATE) {
 
-        } else
-            if (aux[i].foreignKey == true) {
+        if (aux[i].foreignKey == true) {
             unsigned int resultNumber;
             char signal[2 + 1];
             strcpy(signal, "==");
@@ -460,6 +472,11 @@ void listRegistry(void * reg, FieldAux *aux, unsigned field) {
                 print(type, reg);
             } else puts("No Value");
         }
+    }// se for extrutura
+    else {
+
+        listSubStruct(aux, i, reg);
+
     }
     puts("");
 }
@@ -655,7 +672,7 @@ void setField(DataType fieldType, void * field, void *value) {
 
 void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
     unsigned i, j;
-    unsigned short op;
+    unsigned short op = 0;
     FieldAux * aux = class->auxStruct;
     for (i = 0; i < field; ++i) {
         reg = reg + aux[i].sizeBytes;
@@ -664,9 +681,10 @@ void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
 
     //IF the request type is CREATE and the field is auto incremental will not request user data and set automat number (last reg number + step)
     if (rtype == CREATE && aux[i].autoIncrement == true) {
-        unsigned short step;
-        step = (*(class->elements) + aux[i].step);
-
+        unsigned short step = 0, storage = 0;
+        //if there is registries in data , this will get the id of the last registry
+        if (*(class->elements) != 0)getAtributeValue(elementMemoryAdress(class->data, class->StructTypeSize, *(class->elements)), aux, field, &storage);
+        step = (storage + aux[i].step);
         setField(type, reg, &step);
     } else {
         if (aux[i].type != STRUCT) {
@@ -677,15 +695,9 @@ void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
             if (op == 0 || op == 1) {
                 if (aux[i].required == true) {
                     do {
-                        if (aux[i].date == true) {
-                            printString(aux[i].alias);
-                            puts("Pedir a Data");
-
-                        } else {
-                            printString(aux[i].alias);
-                            read(type, reg, aux[i].maxSize);
-                            puts("");
-                        }
+                        printString(aux[i].alias);
+                        read(type, reg, aux[i].maxSize);
+                        puts("");
                     } while (reg == NULL);
 
                 } else {
@@ -702,7 +714,25 @@ void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
                 unsigned short lastReg = *(aux[field].parentClass->elements) + 1;
                 setField(type, reg, &lastReg);
             }
+        }// se for extrutura
+        else {
+            Class *subStructClass;
+            subStructClass = aux[i].substructClass;
+            FieldAux *substructAux;
+            substructAux = subStructClass->auxStruct;
+            printString(aux[i].alias);
+            for (j = 0; j < subStructClass->fieldsNumber; ++j) {
+                reg = reg + substructAux[j].sizeBytes;
+                printString(substructAux[j].alias);
+                read(substructAux[j].type, reg, substructAux[j].maxSize);
+                puts("");
+            }
+
+
+
         }
+
+
     }
 }
 
@@ -788,7 +818,7 @@ bool checkUniqueField(const unsigned int field, void *searchValue, void * list, 
  * @param aux
  * @param fieldsNumber
  */
-void create(Class *class) {
+void create(Class * class) {
     fullRead(class, CREATE, (*class->elements));
     (*class->elements)++;
 

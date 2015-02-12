@@ -11,6 +11,7 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+#include "Date.h"
 
     typedef int bool;
 #define true 1
@@ -24,6 +25,7 @@ extern "C" {
 #define UNSIGNED_SHORT_SIZE sizeof(unsigned short)
 #define UNSIGNED_INT_SIZE sizeof(unsigned int)
 #define BOOL_SIZE sizeof(bool)
+#define DATE_SIZE sizeof(Date)
 
 #define NO_VALUE -1
 
@@ -114,7 +116,7 @@ extern "C" {
         TypeSize sizeBytes;
         unsigned int minSize;
         unsigned int maxSize;
-        void *substruct;
+        void *substructClass;
         bool date;
     } FieldAux;
 

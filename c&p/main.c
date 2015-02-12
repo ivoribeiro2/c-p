@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 
     //---------------------------------------------------------------------------------------------------------//
 
-    unsigned short contadorTipoUtilizadores, contadorUtilizadores, contadorClientes=0, contadorUnidades, contadorIngredientes, contadorProdutosFinais, contadorLinhasProdutoFinal, contadorEncomenda, contadorLinhasEncomenda, contadorProducao;
+    unsigned short contadorTipoUtilizadores=0, contadorUtilizadores=0, contadorClientes=0, contadorUnidades=0, contadorIngredientes=0, contadorProdutosFinais=0, contadorLinhasProdutoFinal=0, contadorEncomenda=0, contadorLinhasEncomenda=0, contadorProducao=0;
     char NomeFicheiro[SHORT_STRING];
 
     //---------------------------------------------------------------------------------------------------------//
@@ -174,6 +174,20 @@ int main(int argc, char** argv) {
     readFile(NomeFicheiro, &linhaProdutoFinalClass, MAX_LINHA_PRODUTO_FINAL);
 
     //---------------------------------------------------------------------------------------------------------//
+    //Datas
+    FieldAux extructAuxDate[] = {
+        {.fieldName = "day", .alias = "Dia", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true},
+        {.fieldName = "mouth", .alias = "Mes", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true},
+        {.fieldName = "year", .alias = "Ano", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true},
+
+    };
+    const unsigned int tamAuxDate = (sizeof (extructAuxDate) / sizeof (extructAuxDate[0]));
+    const unsigned int tamTipoDate = sizeof (Date);
+
+    Class dataClass = {.name = "Data", .StructTypeSize = tamTipoDate,.auxStruct = &extructAuxDate,.fieldsNumber = tamAuxDate};
+
+
+    //---------------------------------------------------------------------------------------------------------//
     //Encomenda
 
     const unsigned MAX_ENCOMENDA = 10;
@@ -181,8 +195,8 @@ int main(int argc, char** argv) {
     FieldAux estructAuxEncomenda[] = {
         {.fieldName = "id_encomenda", .alias = "Numero da Encomenda", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
         {.fieldName = "id_cliente", .alias = "Cliente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &clienteClass, .parentPrimaryKey = ID_CLIENTE},
-        {.fieldName = "data_encomenda", .alias = "Data Encomenda", .date = true, .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = false, .autoIncrement = false},
-        {.fieldName = "data_entrega", .alias = "Data Entrega", .date = true, .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false},
+        {.fieldName = "data_encomenda", .alias = "Data Encomenda", .date = true, .sizeBytes = tamTipoDate, .type = STRUCT,.substructClass=&dataClass, .unique = false, .required = false, .autoIncrement = false},
+        {.fieldName = "data_entrega", .alias = "Data Entrega", .date = true, .sizeBytes = tamTipoDate, .type = STRUCT,.substructClass=&dataClass, .unique = false, .required = true, .autoIncrement = false},
 
     };
 

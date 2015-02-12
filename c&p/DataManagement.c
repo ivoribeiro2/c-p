@@ -681,10 +681,11 @@ void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
 
     //IF the request type is CREATE and the field is auto incremental will not request user data and set automat number (last reg number + step)
     if (rtype == CREATE && aux[i].autoIncrement == true) {
-        unsigned short step = 0, storage = 0;
+        unsigned short step, storage;
         //if there is registries in data , this will get the id of the last registry
-        if (*(class->elements) != 0)getAtributeValue(elementMemoryAdress(class->data, class->StructTypeSize, *(class->elements)), aux, field, &storage);
-        step = (storage + aux[i].step);
+        //if (*(class->elements) != 0)getAtributeValue(elementMemoryAdress(class->data, class->StructTypeSize, *(class->elements)), aux, field, &storage);
+        //step = (storage + aux[i].step);
+        step = (*(class->elements) + aux[i].step);
         setField(type, reg, &step);
     } else {
         if (aux[i].type != STRUCT) {

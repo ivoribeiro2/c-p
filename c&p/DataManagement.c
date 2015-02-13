@@ -644,7 +644,7 @@ bool foreignKeyRead(FieldAux *aux, const unsigned short field) {
         puts("__________________________________________________________________________");
         puts("");
     } else if (op == 2) {
-        fullRead(aux[field].parentClass, CREATE, *(aux[field].parentClass->elements));
+        create(aux[field].parentClass);
         char nomeFicheiro[MEDIUM_STRING];
         strcpy(nomeFicheiro, aux[field].parentClass->fileName);
         writeFile(nomeFicheiro, aux[field].parentClass->name);
@@ -712,7 +712,7 @@ void readRegistry(Class *class, RequestType rtype, void * reg, unsigned field) {
                     }
                 }
             } else if (op == 2) {
-                unsigned short lastReg = *(aux[field].parentClass->elements) + 1;
+                unsigned short lastReg = *(aux[field].parentClass->elements);
                 setField(type, reg, &lastReg);
             }
         }// se for extrutura

@@ -3,7 +3,6 @@
 #include "cliente.h"
 #include <string.h>
 
-
 void guardarCliente(Class *clienteClass) {
     char NomeFicheiro[SHORT_STRING];
     strcpy(NomeFicheiro, "cliente.txt");
@@ -18,6 +17,16 @@ void listarClientes(Class *clienteClass) {
 void listarCliente(Class *clienteClass, const unsigned int chave) {
     singleList(clienteClass, chave);
 }
+
+void listarProcessoCliente(Class *clienteClass, Class *encomendaClass, Class *linhaEncomendaClass, Class *producaoClass) {
+    unsigned short i, id_cliente;
+    Cliente *clientes;
+    clientes = clienteClass->data;
+    for (i = 0; i<*(clienteClass->elements); i++) {
+        id_cliente = clientes[i].id_cliente;
+        listarEncomendasCompletasCliente(encomendaClass, id_cliente, linhaEncomendaClass, producaoClass);
+    }
+};
 
 void filtrarClientes(Class *clienteClass, int *chaves, int numeroChaves, int *campos, int numeroCampos) {
     parsedList(clienteClass, chaves, numeroChaves, campos, numeroCampos);
@@ -73,20 +82,18 @@ void editarClientes(Class *clienteClass, const unsigned int *chaves, const unsig
 
 }
 
-short pesquisarCliente(Class *clienteClass, const unsigned int campo, void *valorPesquisar, DataType tipoValorPesquisar, unsigned int *nResultados, char *sinal){
-    
-    unsigned short chave = searchSingle(clienteClass, campo, valorPesquisar, tipoValorPesquisar,nResultados,sinal);
-    if(nResultados!=0)return chave;
+short pesquisarCliente(Class *clienteClass, const unsigned int campo, void *valorPesquisar, DataType tipoValorPesquisar, unsigned int *nResultados, char *sinal) {
+
+    unsigned short chave = searchSingle(clienteClass, campo, valorPesquisar, tipoValorPesquisar, nResultados, sinal);
+    if (nResultados != 0)return chave;
     else return NO_VALUE;
 }
 
-
 void removerCliente(Class *clienteClass, const unsigned short key) {
-        removeKey(clienteClass, key);
-        guardarCliente(clienteClass);
-        puts("Cliente removido com sucesso");
+    removeKey(clienteClass, key);
+    guardarCliente(clienteClass);
+    puts("Cliente removido com sucesso");
 }
-
 
 void listar_remover_cliente(Class *clienteClass) {
     listarClientes(clienteClass);
@@ -96,7 +103,7 @@ void listar_remover_cliente(Class *clienteClass) {
     Cliente *cliente;
     cliente = clienteClass->data;
     if (clienteID >= cliente[0].id_cliente && clienteID <= cliente[*(clienteClass->elements) - 1].id_cliente) {
-       removerCliente(clienteClass, clienteID - 1);
+        removerCliente(clienteClass, clienteID - 1);
     }
 }
 

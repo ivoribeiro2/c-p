@@ -27,7 +27,6 @@ void filtrarLinhaEncomenda(Class *linhaEncomendaClass, int chave, int *campos, i
     singleParsedList(linhaEncomendaClass, chave, campos, numeroCampos);
 }
 
-
 void inserirLinhaEncomenda(Class *linhaEncomendaClass) {
     char mensagemConfirmacao[MEDIUM_STRING];
     strcpy(mensagemConfirmacao, "Tem a certeza que pertende inserir uma nova linhaEncomenda?[Y/N]");
@@ -40,13 +39,14 @@ void inserirLinhaEncomenda(Class *linhaEncomendaClass) {
     } else puts("Regressar ao menu gestao de linhaEncomenda");
 
 }
-void inserirLinhaEncomendaEncomenda(Class *linhaEncomendaClass, unsigned short idEncomenda){
-    int camposLinhaEncomendaCliente[] = { ID_LINHA_ENCOMENDA, ID_PRODUTO_FINAL_LINHA_ENCOMENDA, QUANTIDADE_LINHA_ENCOMENDA};
+
+void inserirLinhaEncomendaEncomenda(Class *linhaEncomendaClass, unsigned short idEncomenda) {
+    int camposLinhaEncomendaCliente[] = {ID_LINHA_ENCOMENDA, ID_PRODUTO_FINAL_LINHA_ENCOMENDA, QUANTIDADE_LINHA_ENCOMENDA};
     singleParsedRead(linhaEncomendaClass, CREATE, *(linhaEncomendaClass->elements), camposLinhaEncomendaCliente, 3);
     LinhaEncomenda *linhaEncomendas;
     linhaEncomendas = linhaEncomendaClass->data;
     (*linhaEncomendaClass->elements)++;
-    linhaEncomendas[*(linhaEncomendaClass->elements)-1].id_encomenda = idEncomenda;
+    linhaEncomendas[*(linhaEncomendaClass->elements) - 1].id_encomenda = idEncomenda;
     guardarEncomenda(linhaEncomendaClass);
 }
 
@@ -84,11 +84,10 @@ void editarLinhaEncomendas(Class *linhaEncomendaClass, const unsigned int *chave
 }
 
 void removerLinhaEncomenda(Class *linhaEncomendaClass, const unsigned short key) {
-        removeKey(linhaEncomendaClass, key);
-        guardarLinhaEncomenda(linhaEncomendaClass);
-        puts("Linha Encomenda removido com sucesso Obrigado");
+    removeKey(linhaEncomendaClass, key);
+    guardarLinhaEncomenda(linhaEncomendaClass);
+    puts("Linha Encomenda removido com sucesso Obrigado");
 }
-
 
 void listar_remover_linha_encomenda(Class *linhaEncomendaClass) {
     listarLinhaEncomendas(linhaEncomendaClass);
@@ -98,16 +97,40 @@ void listar_remover_linha_encomenda(Class *linhaEncomendaClass) {
     LinhaEncomenda *linhaEncomenda;
     linhaEncomenda = linhaEncomendaClass->data;
     if (linhaEncomendaID >= linhaEncomenda[0].id_linha_encomenda && linhaEncomendaID <= linhaEncomenda[*(linhaEncomendaClass->elements) - 1].id_linha_encomenda) {
-       removerLinhaEncomenda(linhaEncomendaClass, linhaEncomendaID - 1);
+        removerLinhaEncomenda(linhaEncomendaClass, linhaEncomendaID - 1);
     }
 }
 
 int * pesquisarLinhaEncomenda(Class *linhaEncomendaClass, const unsigned int campo, void *valorPesquisar, unsigned int *numeroResultados, char *sinal) {
-    FieldAux *aux; 
+    FieldAux *aux;
     aux = linhaEncomendaClass->auxStruct;
     int * chaves;
-    chaves=search(campo, valorPesquisar, linhaEncomendaClass->data, linhaEncomendaClass->auxStruct, (*linhaEncomendaClass->elements), linhaEncomendaClass->StructTypeSize, aux[campo].type, numeroResultados, sinal);
+    chaves = search(campo, valorPesquisar, linhaEncomendaClass->data, linhaEncomendaClass->auxStruct, (*linhaEncomendaClass->elements), linhaEncomendaClass->StructTypeSize, aux[campo].type, numeroResultados, sinal);
     return chaves;
 }
+
+void listarLinhasEncomenda(Class *linhasEncomendaClass, const unsigned short idEncomenda) {
+    int *rIdLinhas;
+    unsigned short nResultadosLinhas, id;
+    id = idEncomenda;
+    char sinal[2 + 1];
+    strcpy(sinal, "==");
+    rIdLinhas = pesquisarLinhaEncomenda(linhasEncomendaClass, ID_ENCOMENDA_LINHA_ENCOMENDA, &id, &nResultadosLinhas, &sinal);
+    int a, s, chavesIdLinhas[MAX_RESULTS];
+
+    for (a = 0; a < nResultadosLinhas; a++) {
+        chavesIdLinhas[a] = *(rIdLinhas + a);
+    }
+    puts("----------------------------------Encomendas do Cliente-------------------------------------");
+
+    for (s = 0; s < nResultadosLinhas; s++) {
+        puts("------------------------------------Encomenda---------------------------------------");
+        listarEncomenda(linhasEncomendaClass, chavesIdLinhas[s]);
+        puts("--------------------------------------------------------------------------------");
+
+    }
+    puts("--------------------------------------------------------------------------------");
+
+};
 
 

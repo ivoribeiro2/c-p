@@ -4,6 +4,7 @@
 #include "utilizador.h"
 #include "cliente.h"
 #include "string.h"
+#include "encomenda.h"
 
 void clearscreen() {
     printf("\033[2J");
@@ -52,7 +53,7 @@ void gestaoClientesEncomendas(Classes *classes, unsigned short idCliente) {
     } while (opcao != 3);
 }
 
-void relatorios(Classes *classes){
+void relatorios(Classes *classes) {
     unsigned short int opcao;
     do {
         clearscreen();
@@ -83,13 +84,14 @@ void relatorios(Classes *classes){
                 voltar();
                 break;
             case 3:
+                listarProcessoCliente(classes->clienteClass,classes->encomendaClass,classes->linhaEncomendaClass,classes->producaoClass);
                 puts("");
                 voltar();
                 break;
             case 4:
                 puts("");
                 break;
-            
+
             case 5:
                 gestaoGestores(classes);
                 break;
@@ -117,6 +119,7 @@ void gestaoGestores(Classes *classes) {
 
         do {
             puts("Insira o valor da opção pretendida:");
+
             readInt(&opcao);
 
         } while (opcao < 0 || opcao > 6);
@@ -127,12 +130,14 @@ void gestaoGestores(Classes *classes) {
                 voltar();
                 break;
             case 2:
-                listar_Encomenda_linhaEncomenda_producao(classes->encomendaClass, classes->linhaEncomendaClass, classes->producaoClass);
+                listar_Encomendas_linhaEncomenda_producao(classes->encomendaClass, classes->linhaEncomendaClass, classes->producaoClass);
                 voltar();
                 break;
             case 3:
-                listarProducao_Encomenda_LinhaEncomenda(classes->producaoClass, classes->linhaEncomendaClass, classes->produtoFinalClass, classes->linhaProdutoFinalClass);
+            {
+                listarEncomendas(classes->encomendaClass);
                 voltar();
+            }
                 break;
             case 4:
                 inserirEncomendaAdminLinhaEncomenda(classes->encomendaClass, classes->clienteClass, classes->linhaEncomendaClass);

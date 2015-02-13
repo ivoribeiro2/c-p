@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 
     //---------------------------------------------------------------------------------------------------------//
 
-    unsigned short contadorTipoUtilizadores=0, contadorUtilizadores=0, contadorClientes=0, contadorUnidades=0, contadorIngredientes=0, contadorProdutosFinais=0, contadorLinhasProdutoFinal=0, contadorEncomenda=0, contadorLinhasEncomenda=0, contadorProducao=0;
+    unsigned short contadorTipoUtilizadores = 0, contadorUtilizadores = 0, contadorClientes = 0, contadorUnidades = 0, contadorIngredientes = 0, contadorProdutosFinais = 0, contadorLinhasProdutoFinal = 0, contadorEncomenda = 0, contadorLinhasEncomenda = 0, contadorProducao = 0;
     char NomeFicheiro[SHORT_STRING];
 
     //---------------------------------------------------------------------------------------------------------//
@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxTipoUtilizador = (sizeof (estructAuxTipoUtilizadores) / sizeof (estructAuxTipoUtilizadores[0]));
     const unsigned int tamTipoTipoUtilizador = sizeof (TipoUtilizador);
 
-    Class tipoUtilizadorClass = {.name = "Tipo Utilizador",.fileName="tipoUtilizadores.txt", .primaryKeyField = ID_TIPO_UTILIZADOR, .StructTypeSize = tamTipoTipoUtilizador, .data = &tipoUtilizadores, .auxStruct = &estructAuxTipoUtilizadores, .elements = &contadorTipoUtilizadores, .fieldsNumber = tamAuxTipoUtilizador, .aliasField = DESCRICAO_TIPO_UTILIZADOR};
+    Class tipoUtilizadorClass = {.name = "Tipo Utilizador", .fileName = "tipoUtilizadores.txt", .primaryKeyField = ID_TIPO_UTILIZADOR, .StructTypeSize = tamTipoTipoUtilizador, .data = &tipoUtilizadores, .auxStruct = &estructAuxTipoUtilizadores, .elements = &contadorTipoUtilizadores, .fieldsNumber = tamAuxTipoUtilizador, .aliasField = DESCRICAO_TIPO_UTILIZADOR};
 
     strcpy(NomeFicheiro, "tipoUtilizadores.txt");
     readFile(NomeFicheiro, &tipoUtilizadorClass, MAX_TIPO_UTILIZADORES);
@@ -68,7 +68,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxUtilizador = (sizeof (estructAuxUtilizadores) / sizeof (estructAuxUtilizadores[0]));
     const unsigned int tamTipoUtilizador = sizeof (Utilizador);
 
-    Class utilizadorClass = {.name = "Utilizador",.fileName="utilizadores.txt", .StructTypeSize = tamTipoUtilizador, .data = &utilizadores, .auxStruct = &estructAuxUtilizadores, .elements = &contadorUtilizadores, .fieldsNumber = tamAuxUtilizador, .aliasField = USERNAME};
+    Class utilizadorClass = {.name = "Utilizador", .fileName = "utilizadores.txt", .StructTypeSize = tamTipoUtilizador, .data = &utilizadores, .auxStruct = &estructAuxUtilizadores, .elements = &contadorUtilizadores, .fieldsNumber = tamAuxUtilizador, .aliasField = USERNAME};
 
     strcpy(NomeFicheiro, "utilizadores.txt");
     readFile(NomeFicheiro, &utilizadorClass, MAX_UTILIZADORES);
@@ -107,7 +107,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxUnidade = (sizeof (estructAuxUnidades) / sizeof (estructAuxUnidades[0]));
     const unsigned int tamTipoUnidade = sizeof (Unidade);
 
-    Class unidadeClass = {.name = "Unidade",.fileName="unidade.txt", .StructTypeSize = tamTipoUnidade, .data = &unidades, .auxStruct = &estructAuxUnidades, .elements = &contadorUnidades, .fieldsNumber = tamAuxUnidade, .aliasField = DESCRICAO_UNIDADE};
+    Class unidadeClass = {.name = "Unidade", .fileName = "unidade.txt", .StructTypeSize = tamTipoUnidade, .data = &unidades, .auxStruct = &estructAuxUnidades, .elements = &contadorUnidades, .fieldsNumber = tamAuxUnidade, .aliasField = DESCRICAO_UNIDADE};
 
     strcpy(NomeFicheiro, "unidade.txt");
     readFile(NomeFicheiro, &unidadeClass, MAX_UNIDADES);
@@ -126,7 +126,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxIngrediente = (sizeof (estructAuxIngredientes) / sizeof (estructAuxIngredientes[0]));
     const unsigned int tamTipoIngrediente = sizeof (Ingrediente);
 
-    Class ingredienteClass = {.name = "Ingrediente",.fileName="ingrediente.txt",.StructTypeSize = tamTipoIngrediente, .data = &ingredientes, .auxStruct = &estructAuxIngredientes, .elements = &contadorIngredientes, .fieldsNumber = tamAuxIngrediente, .aliasField = DESCRICAO_INGREDIENTE};
+    Class ingredienteClass = {.name = "Ingrediente", .fileName = "ingrediente.txt", .StructTypeSize = tamTipoIngrediente, .data = &ingredientes, .auxStruct = &estructAuxIngredientes, .elements = &contadorIngredientes, .fieldsNumber = tamAuxIngrediente, .aliasField = DESCRICAO_INGREDIENTE};
 
     strcpy(NomeFicheiro, "ingrediente.txt");
     readFile(NomeFicheiro, &ingredienteClass, MAX_INGREDIENTES);
@@ -145,7 +145,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxProdutoFinal = (sizeof (estructAuxProdutoFinal) / sizeof (estructAuxProdutoFinal[0]));
     const unsigned int tamTipoProdutoFinal = sizeof (ProdutoFinal);
 
-    Class produtoFinalClass = {.name = "Produto Final",.fileName="produtoFinal.txt", .StructTypeSize = tamTipoProdutoFinal, .data = &produtosFinais, .auxStruct = &estructAuxProdutoFinal, .elements = &contadorProdutosFinais, .fieldsNumber = tamAuxProdutoFinal, .aliasField = DESCRICAO_PRODUTO_FINAL};
+    Class produtoFinalClass = {.name = "Produto Final", .fileName = "produtoFinal.txt", .StructTypeSize = tamTipoProdutoFinal, .data = &produtosFinais, .auxStruct = &estructAuxProdutoFinal, .elements = &contadorProdutosFinais, .fieldsNumber = tamAuxProdutoFinal, .aliasField = DESCRICAO_PRODUTO_FINAL};
 
     strcpy(NomeFicheiro, "produtoFinal.txt");
     readFile(NomeFicheiro, &produtoFinalClass, MAX_PRODUTO_FINAL);
@@ -168,7 +168,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxLinhaProdutoFinal = (sizeof (estructAuxLinhaProdutoFinal) / sizeof (estructAuxLinhaProdutoFinal[0]));
     const unsigned int tamTipoLinhaProdutoFinal = sizeof (ProdutoFinal);
 
-    Class linhaProdutoFinalClass = {.name = "Linha Produto Final",.fileName="linhaProdutoFinal.txt", .StructTypeSize = tamTipoLinhaProdutoFinal, .data = &linhasProdutoFinal, .auxStruct = &estructAuxLinhaProdutoFinal, .elements = &contadorLinhasProdutoFinal, .fieldsNumber = tamAuxLinhaProdutoFinal, .aliasField = ID_INGREDIENTE_LINHA_PRODUTO_FINAL};
+    Class linhaProdutoFinalClass = {.name = "Linha Produto Final", .fileName = "linhaProdutoFinal.txt", .StructTypeSize = tamTipoLinhaProdutoFinal, .data = &linhasProdutoFinal, .auxStruct = &estructAuxLinhaProdutoFinal, .elements = &contadorLinhasProdutoFinal, .fieldsNumber = tamAuxLinhaProdutoFinal, .aliasField = ID_INGREDIENTE_LINHA_PRODUTO_FINAL};
 
     strcpy(NomeFicheiro, "linhaProdutoFinal.txt");
     readFile(NomeFicheiro, &linhaProdutoFinalClass, MAX_LINHA_PRODUTO_FINAL);
@@ -184,7 +184,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxDate = (sizeof (extructAuxDate) / sizeof (extructAuxDate[0]));
     const unsigned int tamTipoDate = sizeof (Date);
 
-    Class dataClass = {.name = "Data", .StructTypeSize = tamTipoDate,.auxStruct = &extructAuxDate,.fieldsNumber = tamAuxDate};
+    Class dataClass = {.name = "Data", .StructTypeSize = tamTipoDate, .auxStruct = &extructAuxDate, .fieldsNumber = tamAuxDate};
 
 
     //---------------------------------------------------------------------------------------------------------//
@@ -195,8 +195,8 @@ int main(int argc, char** argv) {
     FieldAux estructAuxEncomenda[] = {
         {.fieldName = "id_encomenda", .alias = "Numero da Encomenda", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = true, .required = true, .autoIncrement = true, .step = 1},
         {.fieldName = "id_cliente", .alias = "Cliente", .sizeBytes = SHORT_SIZE, .type = SHORT, .unique = false, .required = true, .autoIncrement = false, .foreignKey = true, .parentClass = &clienteClass, .parentPrimaryKey = ID_CLIENTE},
-        {.fieldName = "data_encomenda", .alias = "Data Encomenda", .date = true, .sizeBytes = tamTipoDate, .type = STRUCT,.substructClass=&dataClass, .unique = false, .required = false, .autoIncrement = false},
-        {.fieldName = "data_entrega", .alias = "Data Entrega", .date = true, .sizeBytes = tamTipoDate, .type = STRUCT,.substructClass=&dataClass, .unique = false, .required = true, .autoIncrement = false},
+        {.fieldName = "data_encomenda", .alias = "Data Encomenda", .date = true, .sizeBytes = tamTipoDate, .type = STRUCT, .substructClass = &dataClass, .unique = false, .required = false, .autoIncrement = false},
+        {.fieldName = "data_entrega", .alias = "Data Entrega", .date = true, .sizeBytes = tamTipoDate, .type = STRUCT, .substructClass = &dataClass, .unique = false, .required = true, .autoIncrement = false},
 
     };
 
@@ -204,7 +204,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxEncomenda = (sizeof (estructAuxEncomenda) / sizeof (estructAuxEncomenda[0]));
     const unsigned int tamTipoEncomenda = sizeof (Encomenda);
 
-    Class encomendaClass = {.name = "encomenda",.fileName="encomenda.txt", .StructTypeSize = tamTipoEncomenda, .data = &encomenda, .auxStruct = &estructAuxEncomenda, .elements = &contadorEncomenda, .fieldsNumber = tamAuxEncomenda, .aliasField = ID_CLIENTE};
+    Class encomendaClass = {.name = "encomenda", .fileName = "encomenda.txt", .StructTypeSize = tamTipoEncomenda, .data = &encomenda, .auxStruct = &estructAuxEncomenda, .elements = &contadorEncomenda, .fieldsNumber = tamAuxEncomenda, .aliasField = ID_CLIENTE};
 
     strcpy(NomeFicheiro, "encomenda.txt");
     readFile(NomeFicheiro, &encomendaClass, MAX_ENCOMENDA);
@@ -226,7 +226,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxLinhaEncomenda = (sizeof (estructAuxLinhaEncomenda) / sizeof (estructAuxLinhaEncomenda[0]));
     const unsigned int tamTipoLinhaEncomenda = sizeof (LinhaEncomenda);
 
-    Class linhaEncomendaClass = {.name = "Linha Encomenda",.fileName="linhaEncomenda.txt", .StructTypeSize = tamTipoLinhaEncomenda, .data = &linhasEncomenda, .auxStruct = &estructAuxLinhaEncomenda, .elements = &contadorLinhasEncomenda, .fieldsNumber = tamAuxLinhaEncomenda, .aliasField = ID_PRODUTO_FINAL_LINHA_ENCOMENDA};
+    Class linhaEncomendaClass = {.name = "Linha Encomenda", .fileName = "linhaEncomenda.txt", .StructTypeSize = tamTipoLinhaEncomenda, .data = &linhasEncomenda, .auxStruct = &estructAuxLinhaEncomenda, .elements = &contadorLinhasEncomenda, .fieldsNumber = tamAuxLinhaEncomenda, .aliasField = ID_PRODUTO_FINAL_LINHA_ENCOMENDA};
 
     strcpy(NomeFicheiro, "linhaEncomenda.txt");
     readFile(NomeFicheiro, &linhaEncomendaClass, MAX_LINHA_ENCOMENDA);
@@ -246,7 +246,7 @@ int main(int argc, char** argv) {
     const unsigned int tamAuxProducao = (sizeof (estructAuxProducao) / sizeof (estructAuxProducao[0]));
     const unsigned int tamTipoProducao = sizeof (Producao);
 
-    Class producaoClass = {.name = "Producao",.fileName="producao.txt", .StructTypeSize = tamTipoProducao, .data = &producoes, .auxStruct = &estructAuxProducao, .elements = &contadorProducao, .fieldsNumber = tamAuxProducao, .aliasField = ID_LINHA_ENCOMENDA_PRODUCAO};
+    Class producaoClass = {.name = "Producao", .fileName = "producao.txt", .StructTypeSize = tamTipoProducao, .data = &producoes, .auxStruct = &estructAuxProducao, .elements = &contadorProducao, .fieldsNumber = tamAuxProducao, .aliasField = ID_LINHA_ENCOMENDA_PRODUCAO};
 
     strcpy(NomeFicheiro, "producao.txt");
     readFile(NomeFicheiro, &producaoClass, MAX_PRODUCAO);
@@ -280,18 +280,24 @@ int main(int argc, char** argv) {
     classes.linhaEncomendaClass = &linhaEncomendaClass;
     classes.producaoClass = &producaoClass;
 
+
     puts("Administrador:                        Cliente:");
     puts("Login: a                              Login: c");
     puts("Password: 1234                        Password 1234");
+    //menuLogin(&classes);
+    //listarProducao_Encomenda_LinhaEncomenda(classes.producaoClass, classes.linhaEncomendaClass, classes.produtoFinalClass, classes.linhaProdutoFinalClass);
+
     menuLogin(&classes);
+    //unsigned short idCliente=2;
+    //listarEncomendasCompletasCliente(classes.encomendaClass,idCliente,classes.linhaEncomendaClass,classes.producaoClass); 
     //---------------------------------------------------------------------------------------------------------//
     //Checks
     //inserirTipoUtilizador(classes.tipoUtilizadorClass);
     //listarTipoUtilizadores(classes.tipoUtilizadorClass);
 
     //listarTipoUtilizador(classes.tipoUtilizadorClass,0);
-    int chaves[] = {0, 1};
-    int campos[] = {ID_TIPO_UTILIZADOR, DESCRICAO_TIPO_UTILIZADOR};
+    //int chaves[] = {0, 1};
+    //int campos[] = {ID_TIPO_UTILIZADOR, DESCRICAO_TIPO_UTILIZADOR};
     //filtrarTipoUtilizadores(classes.tipoUtilizadorClass, chaves, 2, campos, 2);
     //filtrarTipoUtilizador(classes.tipoUtilizadorClass,0,campos,2);
     //filtrarEditarTipoUtilizador(classes.tipoUtilizadorClass,0,campos,2);
@@ -308,12 +314,12 @@ int main(int argc, char** argv) {
     // listarUtilizador(classes.utilizadorClass, 0);
     //listar_editar_utilizadores(classes.utilizadorClass);
     //printShort(classes.utilizadorClass->elements);
-    
+
     //inserirCliente(classes.clienteClass);
     //removerCliente(classes.clienteClass,1);
     //listarClientes(classes.clienteClass);
 
-   
+
     // inserirIngrediente(classes.ingredienteClass);
     //listarIngredientes(classes.ingredienteClass);
 
@@ -323,7 +329,7 @@ int main(int argc, char** argv) {
     //inserirLinhaProdutoFinal(classes.linhaProdutoFinalClass);
     //listarLinhaProdutosFinais(classes.linhaProdutoFinalClass);
 
-    //inserirEncomenda(classes.encomendaClass);
+    // inserirEncomenda(classes.encomendaClass);
     //listarEncomendas(classes.encomendaClass);
 
     // inserirLinhaEncomenda(classes.linhaEncomendaClass);

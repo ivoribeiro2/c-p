@@ -284,10 +284,12 @@ int main(int argc, char** argv) {
     puts("Administrador:                        Cliente:");
     puts("Login: a                              Login: c");
     puts("Password: 1234                        Password 1234");
-    //menuLogin(&classes);
+    menuLogin(&classes);
+    
+    //Testes
     //listarProducao_Encomenda_LinhaEncomenda(classes.producaoClass, classes.linhaEncomendaClass, classes.produtoFinalClass, classes.linhaProdutoFinalClass);
 
-    menuLogin(&classes);
+   //menuLogin(&classes);
     //unsigned short idCliente=2;
     //listarEncomendasCompletasCliente(classes.encomendaClass,idCliente,classes.linhaEncomendaClass,classes.producaoClass); 
     //---------------------------------------------------------------------------------------------------------//
@@ -326,7 +328,7 @@ int main(int argc, char** argv) {
     //inserirProdutoFinal(classes.produtoFinalClass);
     //listarProdutosFinais(classes.produtoFinalClass);
 
-    //inserirLinhaProdutoFinal(classes.linhaProdutoFinalClass);
+   // inserirLinhaProdutoFinal(classes.linhaProdutoFinalClass);
     //listarLinhaProdutosFinais(classes.linhaProdutoFinalClass);
 
     // inserirEncomenda(classes.encomendaClass);

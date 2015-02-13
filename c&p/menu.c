@@ -135,7 +135,7 @@ void gestaoGestores(Classes *classes) {
                 break;
             case 3:
             {
-                listarEncomendas(classes->encomendaClass);
+               listarProducao_Encomenda_LinhaEncomenda(classes->producaoClass,classes->linhaEncomendaClass,classes->produtoFinalClass,classes->linhaProdutoFinalClass);
                 voltar();
             }
                 break;

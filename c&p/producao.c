@@ -104,7 +104,7 @@ int * pesquisarProducao(Class *producaoClass, const unsigned int campo, void *va
 }
 
 void listarProducao_Encomenda_LinhaEncomenda(Class * producaoClass, Class* linhaEncomendaClass, Class *produtoFinalClass, Class * linhaProdutoFinalClass) {
-    unsigned short i, j, k, idLinhaEncomenda, idProdutoFinal, nResultados, totalEncomendado;
+    unsigned short i=0, j, k, idLinhaEncomenda, idProdutoFinal, nResultados, totalEncomendado;
     float quantidadeLinha, quantidadeTotal;
     Producao *producao;
     LinhaEncomenda *linhaEncomenda;
@@ -117,19 +117,27 @@ void listarProducao_Encomenda_LinhaEncomenda(Class * producaoClass, Class* linha
     char sinal[2 + 1];
     strcpy(sinal, "==");
     int camposListProdutoFinal[] = {ID_INGREDIENTE_LINHA_PRODUTO_FINAL, ID_UNIDADE_LINHA_PRODUTO_FINAL};
+    
     for (i = 0; i<*(producaoClass->elements); i++) {
         puts("----------------------------------Producao--------------------------");
 
-        listarProducao(producaoClass, i);
-        getAtributeValue(&producao[i], producaoClass->auxStruct, ID_LINHA_ENCOMENDA_PRODUCAO, &idLinhaEncomenda);
-        getAtributeValue(&linhaEncomenda[idLinhaEncomenda - 1], linhaEncomendaClass->auxStruct, ID_PRODUTO_FINAL_LINHA_ENCOMENDA, & idProdutoFinal);
+        listarProducao(producaoClass, i);        
+        idLinhaEncomenda=producao[i].id_linha_encomenda;
+        idProdutoFinal=linhaEncomenda[idLinhaEncomenda - 1].id_produto_final;
+        
         listarProdutoFinal_LinhasProdutoFinal(produtoFinalClass, linhaProdutoFinalClass, (idProdutoFinal - 1));
+        
         puts("---------------------Calculo Necessidades------------------------------");
+        printShort(&i);
         resultados = pesquisarLinhaProdutoFinal(linhaProdutoFinalClass, ID_PRODUTO_FINAL_LINHA_PRODUTO_FINAL, &idProdutoFinal, &nResultados, sinal);
+        
         if (nResultados != 0) {
+            
             for (j = 0; j < nResultados; j++) {
                 chaves[j] = *(resultados + j);
             }
+            
+            
 
             for (k = 0; k < nResultados; k++) {
                 quantidadeLinha = linhaProdutoFinal[chaves[k]].quantidade;
@@ -142,8 +150,10 @@ void listarProducao_Encomenda_LinhaEncomenda(Class * producaoClass, Class* linha
                 puts("");
 
             }
+            
 
         } else puts("Não foram encontradas linhas do produto final");
+         
     }
 };
 
